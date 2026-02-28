@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-calendar.css">
+  <title>Cocotte Calendar</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- ===============================
+         PC用ヘッダー
+    ================================ -->
+    <div class="pc-header">
+      <div class="header-curve">
+        <img src="img/pc/header-curve.svg" alt="Header curve">
+
+        <div class="curve-menu-wrap">
+          <nav class="curve-menu">
+            <a data-course="patisserie">パティシエコース</a>
+            <span class="divider"></span>
+
+            <a data-course="barista">カフェ＆バリスタコース</a>
+            <span class="divider"></span>
+
+            <a data-course="bread">ブーランジェ パンコース</a>
+            <span class="divider"></span>
+
+            <a data-course="creator">スイーツカフェクリエイターコース</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===============================
+         ヒーローエリア
+    ================================ -->
+    <div class="hero">
+
+      <!-- 上部（ロゴ・メニューボタン） -->
+      <div class="hero-top">
+        <a href="index-phone.html" class="hero-logo-link">
+          <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+        </a>
+        <img src="img/phone/menu.svg" class="hero-menu" alt="menu">
+      </div>
+
+      <!-- 背景 -->
+      <img src="img/phone/calendar-bg.svg" class="bg" alt="">
+      <img src="img/pc/calendar-bg.svg" class="pc-building" alt="">
+
+      <!-- ===============================
+           コース情報表示エリア
+      ================================ -->
+      <div class="top-info">
+
+        <!-- コース詳細（JSで切り替え） -->
+        <div class="course-detail">
+          <h2 class="top-title">パティシエコース</h2>
+          <div class="top-box1"></div>
+          <div class="top-box2"></div>
+        </div>
+
+        <!-- ===============================
+             販売日表示
+        ================================ -->
+        <div class="hanbai">
+          <h3 class="hanbai-title">販売日</h3>
+
+          <!-- 今月 -->
+          <div class="hanbai-row">
+            <span class="month-label left"></span>
+            <div class="days"></div>
+            <span class="month-label right"></span>
+          </div>
+
+          <!-- 翌月 -->
+          <div class="hanbai-row">
+            <span class="month-label left"></span>
+            <div class="days"></div>
+            <span class="month-label right"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ===============================
+           装飾イラスト
+      ================================ -->
+      <img src="img/phone/cloud1.svg" class="cloud cloud-1" alt="">
+      <img src="img/phone/cloud2.svg" class="cloud cloud-2" alt="">
+      <img src="img/phone/cloud1.svg" class="cloud cloud-3" alt="">
+
+      <img src="img/phone/balloon.svg" class="balloon balloon-1" alt="">
+      <img src="img/pc/balloon1.svg" class="pc-balloon1" alt="">
+      <img src="img/pc/balloon2.svg" class="pc-balloon2" alt="">
+
+      <!-- メニュー誘導用Qマーク -->
+      <img
+        src="img/phone/calender-menu.svg"
+        class="qmark q-green"
+        data-info="info2"
+        alt="menu link"
+      >
+
+      <!-- カレンダーページへのリンク -->
+      <a href="schedule.html">
+        <img src="img/pc/calendar-box.svg" class="pc-calendar-box" alt="calendar">
+      </a>
+
+    </div>
+
+    <!-- ===============================
+         サイドメニュー
+    ================================ -->
+    <div id="sideMenu" class="side-menu">
+      <button id="closeMenu" class="menu-close">
+        <img src="img/phone/menu-close.svg" alt="close">
+      </button>
+
+      <ul class="menu-list">
+        <li class="row">
+          <a href="original.html" class="main">なにたべる？</a>
+        </li>
+
+        <li class="row">
+          <a href="menu.html" class="main">メニュー</a>
+        </li>
+
+        <li class="row">
+          <a href="calendar.html" class="main">カレンダー</a>
+        </li>
+
+        <li class="row">
+          <div class="sub-wrap">
+            <a href="story.html#concept" class="sub">コンセプト</a>
+            <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+            <a href="story.html#product" class="sub">商品詳細</a>
+          </div>
+          <a href="story.html" class="main">ストーリー</a>
+        </li>
+
+        <li class="row">
+          <a href="news.html" class="main">ニュース</a>
+        </li>
+
+        <li class="row">
+          <div class="sub-wrap">
+            <a href="info.html#gallery" class="sub">ギャラリー</a>
+            <a href="info.html#access" class="sub">アクセス情報</a>
+            <a href="info.html#feedback" class="sub">フィードバック</a>
+          </div>
+          <a href="info.html" class="main">インフォメーション</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ===============================
+         カレンダーリンクボックス
+    ================================ -->
+    <div class="info-box" id="infoBox">
+      <img
+        id="infoImage"
+        src="img/phone/box-calendar.svg"
+        class="info-img"
+        alt="calendar"
+      >
+    </div>
+
+    <!-- ===============================
+         クイックナビ（コース一覧）
+    ================================ -->
+    <!-- ================= COURSE SWITCHER ================= -->
+  <div class="course-grid">
+    <div class="course-item" data-course="patisserie">
+      <img src="img/phone/course1.svg" class="course-svg">
+    </div>
+
+    <div class="course-item" data-course="barista">
+      <img src="img/phone/course2.svg" class="course-svg">
+    </div>
+
+    <div class="course-item" data-course="bread">
+      <img src="img/phone/course3.svg" class="course-svg">
+    </div>
+
+    <div class="course-item" data-course="creator">
+      <img src="img/phone/course4.svg" class="course-svg">
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/calendar.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+/* ===================================
+   リセット
+=================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffc1bf;
+  display: flex;
+  justify-content: center;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+.hero-illust,
+.hero-illust img,
+.cloud,
+.balloon {
+  pointer-events: none;
+}
+
+
+/* ===================================
+   フォント設定
+=================================== */
+@font-face {
+  font-family: 'PaulaLily';
+  font-weight: 700;
+  src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MPLUSRounded';
+  font-weight: 400;
+  src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'MPLUSRounded';
+  font-weight: 700;
+  src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
+}
+
+/* ===================================
+   ラッパー
+=================================== */
+.wrapper {
+  max-width: 430px;
+  padding-left: 12px;
+  padding-right: 12px;
+  width: 100%;
+  padding-top: 80px;
+  position: relative;
+  overflow: visible;
+}
+
+
+.hero {
+    background: #ffffff;
+    border: 1px solid #8b5a3c;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+/* ===================================
+   ヒーロートップ（ロゴ・メニュー）
+=================================== */
+
+.hero-top {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  width: calc(100% - 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 50;
+}
+
+.hero-logo { width: 45px; }
+.hero-menu { width: 28px; cursor: pointer; }
+
+/* ===================================
+   ヒーロー（ロジック用コンテナ）
+=================================== */
+
+/* 白いメイン枠（overflowは使わない） */
+.hero-inner {
+  background: #ffc1bf;
+  border: 1px solid #8b5a3c;
+  border-radius: 20px;
+  overflow: visible;
+}
+
+/* ===================================
+   ヒーロー上部クリップ（角丸＋上部分のみ）
+=================================== */
+.hero-clip {
+  position: relative;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+
+/* 背景イラスト */
+.hero-illust img {
+  width: 100%;
+  display: block;
+}
+
+
+
+/* 雲アニメーション */
+.cloud {
+  position: absolute;
+  opacity: 0.9;
+  animation: cloudMove 18s linear infinite;
+}
+@keyframes cloudMove {
+  from { transform: translateX(-20px); }
+  to   { transform: translateX(40px); }
+}
+.cloud-1 { left: 45%; top: 6%; width: 8%; }
+.cloud-2 { left: 10%; top: 32%; width: 20%; animation-duration: 23s; }
+.cloud-3 { right: 8%; top: 23%; width: 12%; }
+
+/* 風船アニメーション */
+.balloon {
+  position: absolute;
+  left: 20%;
+  top: 40%;
+  width: 6%;
+  animation: float 3.5s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ヒーロータイトル */
+.hero-title {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  margin-left: 50px;
+  text-align: left;
+}
+
+.hero-title .title {
+  white-space: nowrap;   /* 🔥 chặn xuống hàng */
+  font-family: "MPLUSRounded", sans-serif;
+  font-weight: 900;
+  font-size: 35px;
+  color: #f36c8a;
+}
+
+.hero-title .sub {
+  font-size: 14px;
+  color: #555;
+}
+
+/* スタートボタン */
+.start-btn {
+  position: absolute;
+  top: 42%;
+  right: 6%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  animation: startBob 1.4s ease-in-out infinite;
+}
+@keyframes startBob {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.start-btn img { width: 110px; }
+
+/* ===================================
+   ホワイトボックス
+=================================== */
+.whitebox {
+  padding: 20px 22px;
+  text-align: center;
+  background:white;
+}
+.whitebox-text {
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #000;
+}
+
+/* ===================================
+   アンケート（背景なし）
+=================================== */
+.anketo {
+  position: relative;
+  background: transparent; 
+  padding: 80px 0 80px;
+  overflow: visible;
+}
+
+/* アンケート用ロード */
+
+.anketo-road {
+  position: relative;
+  top: 0;
+  left: 45%;
+  transform: translateX(-50%);
+  width: 75%;
+  z-index: 1;
+  pointer-events: none;
+}
+.anketo-road img {
+  width: 100%;
+  display: block;
+}
+
+/* ===================================
+   ステップコンテナ（重要）
+=================================== */
+.anketo-steps {
+  position: relative;
+  min-height: 1170px; /* đúng chiều dài ảnh road */
+}
+
+/* ===================================
+   アンケートステップ
+=================================== */
+.anketo-step {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: calc(var(--road-pos) * 1%); /* 🔥 mốc theo ROAD */
+
+  width: min(260px, 80vw);
+  height: 220px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+.anketo-step.shown,
+.anketo-step.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* khoảng cách theo nhóm */
+.anketo-step[data-question^="q3"] {
+  margin-top: 90px;
+}
+
+.anketo-step[data-question^="q4"] {
+  margin-top: 70px;
+}
+
+
+
+/* ===================================
+   質問テキスト
+=================================== */
+.question-text {
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #6b4c3b;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+/* ===================================
+   回答ボタン
+=================================== */
+.answer-list {
+  max-height: 130px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.answer-btn {
+  min-height: 36px;  
+  width: 100%;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 18px;
+  background: #f25563;
+  color: #fff;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 0 #e04552;
+}
+
+.answer-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #e04552;
+}
+
+
+
+/* ===============================
+   RESULT SECTION
+================================ */
+.result {
+  margin-top: 0;       /* không đẩy thêm */
+  padding-top: 20px;  /* sát road */
+}
+
+
+
+/* KHUNG KẾT QUẢ */
+/* ảnh tròn to */
+.result-circle-wrap {
+  position: relative;
+  width: 330px;
+  height: 260px;
+  margin: 0 auto;
+}
+
+
+/* arrow chung */
+.result-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: #f15b6c;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+
+  z-index: 3; /* cao hơn viền */
+}
+
+
+
+/* đặt đúng bán kính viền */
+
+
+/* trái / phải */
+.result-nav.prev {
+  left: -18px;
+}
+
+.result-nav.next {
+  right: -10px;
+}
+
+.result-nav img {
+  width: 120%;
+  height: 120%;
+  object-fit: contain;
+  display: block;
+}
+
+.result-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 30%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;   /* ảnh nằm trên */
+  outline: 6px solid #fff;
+}
+
+.result-circle {
+  transition: border-radius .35s ease;
+}
+
+.result-circle:hover {
+  border-radius: 
+    45% 55% 45% 60% /
+    40% 46% 54% 52%;
+}
+
+/* TEXT */
+.result-sub {
+  margin-top: 20px;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 15px;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.result-main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-name {
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #222;
+}
+
+.result-mascot {
+  width: 50px;
+  height: auto;
+}
+
+/* BUTTON AREA */
+.result-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.result-btn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 999px;
+
+  background: #f25563;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.result-btn.retry {
+  background: #f25563;
+}
+
+/* ICON */
+.btn-icon {
+  width: 18px;
+  height: auto;
+}
+
+
+/* ===================================
+   ヒーロー下部（角丸）
+=================================== */
+.hero-end {
+  background: #ffc1bf;
+  border-radius: 0 0 20px 20px;
+  padding-bottom: 80px;
+}
+
+
+

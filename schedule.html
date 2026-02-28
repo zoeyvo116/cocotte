@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-schedule.css">
+  <title>Cocotte Schedule</title>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+  <!-- =========================
+       PC表示用ヘッダー
+  ========================= -->
+  <header class="pc-header">
+    <div class="header-curve">
+      <img src="img/pc/header-curve.svg" alt="Header curve">
+
+      <!-- PC用メインナビゲーション -->
+      <div class="curve-menu-wrap">
+        <nav class="curve-menu">
+          <a href="original.html">なにたべる？</a>
+          <span class="divider"></span>
+          <a href="menu.html">メニュー</a>
+          <span class="divider"></span>
+          <a href="calendar.html">カレンダー</a>
+          <span class="divider"></span>
+          <a href="story.html">ストーリー</a>
+          <span class="divider"></span>
+          <a href="news.html">ニュース</a>
+          <span class="divider"></span>
+          <a href="info.html">インフォメーション</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================
+       ヒーローエリア
+  ========================= -->
+  <div class="hero">
+
+    <!-- ヒーロー上部（ロゴ・メニューボタン） -->
+    <div class="hero-top">
+      <a href="index-phone.html" class="hero-logo-link">
+        <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+      </a>
+      <img src="img/phone/menu.svg" class="hero-menu">
+    </div>
+
+    <!-- =========================
+         年間カレンダー表示エリア
+    ========================= -->
+    <div class="calendar-wrapper">
+
+      <!-- カレンダータイトル -->
+      <h2 class="calendar-title">年間カレンダー</h2>
+
+      <!-- 曜日表示 -->
+      <div class="calendar-week">
+        <span>月</span><span>火</span><span>水</span>
+        <span>木</span><span>金</span><span>土</span><span>日</span>
+      </div>
+
+      <!-- 日付マス（JavaScriptで生成） -->
+      <div class="calendar-grid">
+        <!-- JSで calendar-day を描画 -->
+      </div>
+
+      <!-- カレンダー凡例（コース別カラー） -->
+      <div class="calendar-legend">
+        <span class="legend-item course-patisserie">パティシエコース</span>
+        <span class="legend-item course-creator">スイーツカフェクリエイターコース</span>
+        <span class="legend-item course-bread">ブーランジェ製パンコース</span>
+        <span class="legend-item course-barista">カフェ＆バリスタコース</span>
+        <span class="legend-item course-off">販売しない</span>
+      </div>
+
+    </div>
+
+    <!-- 背景イラスト -->
+    <img src="img/phone/schedule-bg.svg" class="bg" alt="">
+
+    <!-- 装飾用クラウド -->
+    <img src="img/phone/cloud1.svg" class="cloud cloud-1" alt="">
+    <img src="img/phone/cloud2.svg" class="cloud cloud-2" alt="">
+    <img src="img/phone/cloud1.svg" class="cloud cloud-3" alt="">
+
+  </div>
+
+  <!-- =========================
+       カレンダー操作ボタンエリア
+       （ヒーロー外に配置）
+  ========================= -->
+  <div class="calendar-control">
+    <div class="calendar-button">
+
+      <!-- 背景装飾 -->
+      <img src="img/phone/schedule-button.svg" class="calendar-button-bg" alt="">
+
+      <!-- 月切り替えUI -->
+      <div class="calendar-button-inner">
+
+        <!-- 前の月へ -->
+        <button class="calendar-arrow prev" type="button">
+          <img src="img/phone/menu-arrow-left.svg" alt="">
+        </button>
+
+        <!-- 現在表示中の年月 -->
+        <div class="calendar-button-text">
+          <span id="current-year">2026</span><span class="year">年</span>
+          <span class="divider">｜</span>
+          <span id="current-month">1</span><span class="month">月</span>
+        </div>
+
+        <!-- 次の月へ -->
+        <button class="calendar-arrow next" type="button">
+          <img src="img/phone/menu-arrow-right.svg" alt="">
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       スマホ用サイドメニュー
+  ========================= -->
+  <nav id="sideMenu" class="side-menu">
+    <!-- 閉じるボタン -->
+    <button id="closeMenu" class="menu-close">
+      <img src="img/phone/menu-close.svg" alt="close">
+    </button>
+
+    <!-- メニューリスト -->
+    <ul class="menu-list">
+      <li class="row"><a href="original.html" class="main">なにたべる？</a></li>
+      <li class="row"><a href="menu.html" class="main">メニュー</a></li>
+      <li class="row"><a href="calendar.html" class="main">カレンダー</a></li>
+
+      <!-- ストーリー（サブメニューあり） -->
+      <li class="row">
+        <div class="sub-wrap">
+          <a href="story.html#concept" class="sub">コンセプト</a>
+          <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+          <a href="story.html#product" class="sub">商品詳細</a>
+        </div>
+        <a href="story.html" class="main">ストーリー</a>
+      </li>
+
+      <li class="row"><a href="news.html" class="main">ニュース</a></li>
+
+      <!-- インフォメーション（サブメニューあり） -->
+      <li class="row">
+        <div class="sub-wrap">
+          <a href="info.html#gallery" class="sub">ギャラリー</a>
+          <a href="info.html#access" class="sub">アクセス情報</a>
+          <a href="info.html#feedback" class="sub">フィードバック</a>
+        </div>
+        <a href="info.html" class="main">インフォメーション</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- =========================
+       インフォボックス（画面下固定）
+  ========================= -->
+  <div id="infoBox" class="info-box">
+    <img id="infoImage" src="img/phone/box-calendar.svg" class="info-img" alt="">
+  </div>
+
+  <!-- =========================
+       クイックナビゲーション
+  ========================= -->
+  <div class="course-grid">
+    <a href="original.html" class="course-btn">なに食べる？</a>
+    <a href="menu.html" class="course-btn">メニュー</a>
+    <a href="calendar.html" class="course-btn">カレンダー</a>
+    <a href="story.html" class="course-btn">ストーリー</a>
+    <a href="info.html" class="course-btn">インフォメーション</a>
+    <a href="news.html" class="course-btn">ニュース</a>
+  </div>
+
+</div>
+
+<!-- カレンダー制御用JavaScript -->
+<script src="js/schedule.js"></script>
+</body>
+</html>

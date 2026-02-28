@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-phone.css">
+  <title>Cocotte Homepage</title>
+</head>
+
+<body>
+
+  <div class="wrapper">
+
+    <!-- =========================
+         PC用ヘッダー
+    ========================= -->
+    <header class="pc-header">
+      <div class="header-curve">
+        <img src="img/pc/header-curve.svg" alt="Header curve">
+
+        <div class="curve-menu-wrap">
+          <nav class="curve-menu">
+            <a href="original.html">なにたべる？</a>
+            <span class="divider"></span>
+
+            <a href="menu.html">メニュー</a>
+            <span class="divider"></span>
+
+            <a href="calendar.html">カレンダー</a>
+            <span class="divider"></span>
+
+            <a href="story.html">ストーリー</a>
+            <span class="divider"></span>
+
+            <a href="news.html">ニュース</a>
+            <span class="divider"></span>
+
+            <a href="info.html">インフォメーション</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- =========================
+         ヒーローセクション
+    ========================= -->
+    <section class="hero">
+
+      <!-- ロゴ・メニュー -->
+      <div class="hero-top">
+        <a href="index-phone.html" class="hero-logo-link">
+          <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+        </a>
+        <img src="img/phone/menu.svg" class="hero-menu" alt="menu">
+      </div>
+
+      <!-- 背景 -->
+      <img src="img/phone/bg-building.svg" class="bg" alt="">
+      <img src="img/pc/bg-building.svg" class="pc-building" alt="">
+
+      <!-- 雲 -->
+      <img src="img/phone/cloud1.svg" class="cloud cloud-1" alt="">
+      <img src="img/phone/cloud2.svg" class="cloud cloud-2" alt="">
+      <img src="img/phone/cloud1.svg" class="cloud cloud-3" alt="">
+
+      <!-- 気球 -->
+      <img src="img/phone/balloon.svg" class="balloon balloon-1" alt="">
+      <img src="img/pc/balloon1.svg" class="pc-balloon1" alt="">
+      <img src="img/pc/balloon2.svg" class="pc-balloon2" alt="">
+
+      <!-- トラック -->
+      <img src="img/phone/truck.svg" class="truck" alt="">
+
+      <!-- クエスチョンマーク -->
+      <img src="img/phone/q-green.svg"  class="qmark q-green"  data-info="info1" alt="">
+      <img src="img/phone/q-orange.svg" class="qmark q-orange" data-info="info2" alt="">
+      <img src="img/phone/q-brown.svg"  class="qmark q-brown"  data-info="info3" alt="">
+      <img src="img/phone/q-pink.svg"   class="qmark q-pink"   data-info="info4" alt="">
+      <img src="img/phone/q-post.svg"   class="qmark q-post"   data-info="info5" alt="">
+      <img src="img/phone/q-dark.svg"   class="qmark q-dark"   data-info="info6" alt="">
+
+    </section>
+
+    <!-- =========================
+         サイドメニュー
+    ========================= -->
+    <nav id="sideMenu" class="side-menu">
+      <button id="closeMenu" class="menu-close">
+        <img src="img/phone/menu-close.svg" alt="close">
+      </button>
+
+      <ul class="menu-list">
+        <li class="row">
+          <a href="original.html" class="main">なにたべる？</a>
+        </li>
+        <li class="row">
+          <a href="menu.html" class="main">メニュー</a>
+        </li>
+
+        <li class="row">
+          <a href="calendar.html" class="main">カレンダー</a>
+        </li>
+
+        <li class="row">
+          <div class="sub-wrap">
+            <a href="story.html#concept" class="sub">コンセプト</a>
+            <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+            <a href="story.html#product" class="sub">商品詳細</a>
+          </div>
+          <a href="story.html" class="main">ストーリー</a>
+        </li>
+
+        
+
+        <li class="row">
+          <a href="news.html" class="main">ニュース</a>
+        </li>
+
+        <li class="row">
+          <div class="sub-wrap">
+            <a href="info.html#gallery" class="sub">ギャラリー</a>
+            <a href="info.html#access" class="sub">アクセス情報</a>
+            <a href="info.html#feedback" class="sub">フィードバック</a>
+          </div>
+          <a href="info.html" class="main">インフォメーション</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- =========================
+         インフォメーション表示ボックス
+    ========================= -->
+    <div id="infoBox" class="info-box">
+      <img id="infoImage" src="img/phone/box-calendar.svg" class="info-img" alt="">
+    </div>
+
+    <!-- =========================
+         クイックナビ（コース一覧）
+    ========================= -->
+    <div class="course-grid">
+      <a href="original.html" class="course-btn">なに食べる？</a>
+      <a href="menu.html" class="course-btn">メニュー</a>
+      <a href="calendar.html" class="course-btn">カレンダー</a>
+      <a href="story.html" class="course-btn">ストーリー</a>
+      <a href="info.html" class="course-btn">インフォメーション</a>
+      <a href="news.html" class="course-btn">ニュース</a>
+    </div>
+
+  </div><!-- /.wrapper -->
+
+  <!-- =========================
+       ローディング画面
+  ========================= -->
+  <div id="loadingScreen" class="loading-screen">
+    <div class="loading-inner">
+
+      <!-- 進捗カウンター -->
+      <div id="loadingCounter" class="loading-counter">0</div>
+
+      <!-- ロゴ -->
+      <img src="img/phone/logo.svg" class="loading-logo" alt="COCOTTE">
+
+      <!-- 背景バナー -->
+      <img src="img/info/loading.jpg" class="loading-banner" alt="">
+
+      <!-- ウェルカムボックス -->
+      <div class="welcome-box">
+        <h2>ようこそ、COCOTTEへ</h2>
+        <p id="todayCourseText"></p>
+
+        <div class="welcome-actions">
+          <a href="original.html" class="btn-primary">今日のおすすめを見る</a>
+          <a href="menu.html" class="btn-primary" id="goToMenuBtn">メニューを見に行く</a>
+          <button id="enterSite" class="btn-secondary">そのまま入る</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+
+</body>
+</html>

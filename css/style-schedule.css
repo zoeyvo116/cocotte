@@ -1,0 +1,1126 @@
+/* ===================================
+   リセット（全ブラウザ初期化）
+=================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffc1bf;
+    display: flex;
+    font-family: "Noto Sans JP", sans-serif;
+    justify-content: center;
+    
+}
+
+/* ===================================
+   見出し用フォント PaulaLily
+=================================== */
+@font-face {
+    font-family: 'PaulaLily';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+}
+
+/* ===================================
+   本文用フォント M PLUS Rounded
+=================================== */
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 100;
+    src: url('../fonts/MPLUSRounded1c-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 300;
+    src: url('../fonts/MPLUSRounded1c-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 400;
+    src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 500;
+    src: url('../fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 700;
+    src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 900;
+    src: url('../fonts/MPLUSRounded1c-Black.ttf') format('truetype');
+}
+
+/* ===================================
+   全体ラッパー（スマホ幅制御）
+=================================== */
+.wrapper {
+    max-width: 430px;
+    padding: 12px;
+    width: 100%;
+}
+
+/* ===================================
+   ヒーロー（大きいメインビジュアル）
+=================================== */
+.hero {
+    background: #ffffff;
+    border: 1px solid #8b5a3c;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* PC用要素（初期は非表示） */
+.pc-building {
+    display: none;
+}
+
+.pc-header {
+    display: none;
+}
+
+.pc-balloon1,
+.pc-balloon2 {
+    display: none;
+}
+
+/* 背景ビル（モバイル） */
+.bg {
+    display: block;
+    width: 100%;
+}
+
+/* ===================================
+   ヒーロー内ヘッダー（ロゴ・メニュー）
+=================================== */
+.hero-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 24px;
+    position: absolute;
+    top: 24px;
+    width: calc(100% - 52px);
+    z-index: 50;
+}
+
+.hero-logo {
+    width: 45px;
+}
+
+.hero-menu {
+    animation: floatMenu 3s ease-in-out infinite;
+    cursor: pointer;
+    width: 28px;
+}
+
+.hero .bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===================================
+   雲アニメーション（背景の動き）
+=================================== */
+.cloud {
+    animation: cloudMove 18s linear infinite;
+    opacity: 0.9;
+    position: absolute;
+}
+
+@keyframes cloudMove {
+    from { transform: translateX(-20px); }
+    to   { transform: translateX(40px); }
+}
+
+.cloud-1 {
+    left: 45%;
+    top: 6%;
+    width: 8%;
+}
+
+.cloud-2 {
+    animation-duration: 23s;
+    left: 10%;
+    top: 90%;
+    width: 10%;
+}
+
+.cloud-3 {
+    right: 8%;
+    top: 67%;
+    width: 12%;
+}
+
+/* ===================================
+   カレンダー全体ラッパー
+=================================== */
+.calendar-wrapper {
+    padding: 70px 20px 36px; /* hero-top分の余白を確保 */
+    padding-bottom: 70px;
+    position: relative;
+    z-index: 20;
+}
+
+/* ===================================
+   カレンダータイトル
+=================================== */
+.calendar-title {
+    color: #D26088;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    text-align: center;
+}
+
+/* ===================================
+   曜日ヘッダー（月〜日）
+=================================== */
+.calendar-week {
+    color: #211849;
+    display: grid;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    grid-template-columns: repeat(7, 1fr);
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+/* ===================================
+   カレンダーグリッド
+=================================== */
+.calendar-grid {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 22px;
+    margin-top: 10px;
+}
+
+/* ===================================
+   日付セル
+=================================== */
+.calendar-day {
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    display: flex;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    justify-content: center;
+    position: relative;
+    transition: 0.2s ease;
+    align-items: center;
+}
+
+/* 日付番号 */
+.calendar-day .day-number {
+    z-index: 2;
+}
+
+/* ホバー時の軽い浮き上がり */
+.calendar-day:hover {
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   アクティブ / 非表示状態
+=================================== */
+.calendar-day.is-active {
+    background: #ffffff;
+}
+
+.calendar-day.is-off {
+    opacity: 0.5;
+}
+
+/* ===================================
+   デフォルト表示（販売なし / 休日）
+=================================== */
+.calendar-day {
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    box-shadow:
+        0 5px 6px rgba(0, 0, 0, 0.2),
+        0 2px 100px rgba(0, 0, 0, 0.01);
+    box-sizing: border-box;
+    color: #45387D;
+}
+
+/* ===================================
+   コース別カラー設定
+=================================== */
+/* パティシエコース */
+.calendar-day.course-patisserie {
+    background: #91C04F;
+    color: #ffffff;
+}
+
+/* カフェ＆バリスタコース */
+.calendar-day.course-barista {
+    background: #F59F37;
+    color: #ffffff;
+}
+
+/* スイーツカフェクリエイターコース */
+.calendar-day.course-creator {
+    background: #EB5160;
+    color: #ffffff;
+}
+
+/* ブーランジェ製パンコース */
+.calendar-day.course-bread {
+    background: #B86A39;
+    color: #ffffff;
+}
+
+/* ===================================
+   凡例（レジェンド）
+=================================== */
+.calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 22px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.legend-item {
+    align-items: center;
+    color: #45387D;
+    display: inline-flex;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+/* 凡例ドット */
+.legend-item::before {
+    border-radius: 50%;
+    content: "";
+    flex-shrink: 0;
+    height: 10px;
+    width: 10px;
+}
+
+/* 凡例カラー */
+.legend-item.course-barista::before {
+    background: #F6A23A;
+}
+
+.legend-item.course-bread::before {
+    background: #A8743A;
+}
+
+.legend-item.course-creator::before {
+    background: #F35C5C;
+}
+
+.legend-item.course-patisserie::before {
+    background: #9ACD4F;
+}
+
+.legend-item.course-off::before {
+    background: #ffffff;
+}
+
+/* ===================================
+   カレンダー操作エリア
+=================================== */
+.calendar-control {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -40px;
+    pointer-events: auto;
+    position: relative;
+    top: -60px;
+    z-index: 100;
+}
+
+/* ===================================
+   カレンダーボタン外枠
+=================================== */
+.calendar-button {
+    margin: 0;
+    max-width: 340px;
+    position: relative;
+    width: 70%;
+}
+
+/* SVG背景 */
+.calendar-button-bg {
+    display: block;
+    width: 100%;
+}
+
+/* ===================================
+   ボタン内部レイアウト
+=================================== */
+.calendar-button-inner {
+    align-items: center;
+    display: flex;
+    inset: 0;
+    justify-content: space-between;
+    padding: 0 18px;
+    pointer-events: none;
+    position: absolute;
+}
+
+/* ===================================
+   矢印ボタン
+=================================== */
+.calendar-arrow {
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    height: 28px;
+    justify-content: center;
+    padding: 0;
+    pointer-events: auto;
+    width: 28px;
+}
+
+.calendar-arrow img {
+    display: block;
+    width: 90%;
+}
+
+.calendar-arrow:active {
+    transform: scale(0.9);
+}
+
+/* ===================================
+   中央テキスト（年月表示）
+=================================== */
+.calendar-button-text {
+    align-items: center;
+    color: #ffffff;
+    display: flex;
+    font-family: "MPLUSRounded", sans-serif;
+    gap: 4px;
+    justify-content: center;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+/* 年・月の数字 */
+#current-month,
+#current-year {
+    font-size: 23px;
+    font-weight: 600;
+}
+
+/* 年 / 月 */
+.calendar-button-text .month,
+.calendar-button-text .year {
+    font-size: 23px;
+    font-weight: 600;
+    margin-left: 1px;
+    opacity: 0.9;
+}
+
+/* 区切り記号 */
+.calendar-button-text .divider {
+    font-size: 23px;
+    opacity: 0.8;
+}
+
+
+
+/* ===================================
+   コースボタン（4種類のコースの一覧）
+=================================== */
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.course-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 56px;
+  background: #ffd6dc;
+  border: 1px solid #7a4a4a;
+  border-radius: 22px;
+
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #7a4a4a;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.course-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+/* ===================================
+   サイドメニュー（右側からスライド表示）
+=================================== */
+.side-menu {
+    background: #d86b8a;
+    border-bottom-left-radius: 180px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    padding: 30px 20px;
+    transition: right 0.4s ease;
+    z-index: 9999;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff80 transparent;
+}
+
+/* メニュー展開時 */
+.side-menu.active {
+    right: 0;
+}
+
+/* ===================================
+   メニューの閉じるボタン（×）
+=================================== */
+.menu-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 28px;
+}
+
+/* ===================================
+   モバイルメニューリスト
+=================================== */
+.menu-list {
+    text-align: right;
+}
+
+/* ===================================
+   各メニュー行（MAIN + SUB）
+=================================== */
+.menu-list .row {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 40px 60px;
+    text-align: right;
+}
+
+/* MAIN テキスト */
+.menu-list .main {
+    color: white;
+    font-family: "PaulaLily", sans-serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* SUB グループ */
+.menu-list .sub-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* SUB テキスト */
+.menu-list .sub {
+    color: white;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 16px;
+    opacity: 0.85;
+}
+
+.menu-list .main {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform-origin: right center;
+}
+
+.menu-list .row:active .main {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* ===================================
+   PC レイアウト（1024px以上）
+=================================== */
+@media (min-width: 1024px) {
+
+     /* -----------------------------------
+       PC：body（中央配置＋スクロール固定）
+    ----------------------------------- */
+    body {
+       background: #ffc1bf;
+        display: block;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        max-width: 1920px;
+        padding: 12px;
+    }
+
+    .pc-frame {
+        margin: auto;
+        max-width: 1920px;
+        padding: 10px;
+    }
+
+    /* -----------------------------------
+       PC：ヘッダーのロゴ
+    ----------------------------------- */
+    .hero-logo {
+        width: 53px;
+    }
+
+    .hero-menu {
+        animation: floatMenu 3s ease-in-out infinite;
+        cursor: pointer;
+        width: 35px;
+    }
+
+    .menu-close {
+        width: 35px;
+    }
+
+    .hero {
+        background: linear-gradient(#9ed9ff 0%, #ffc1bf 100%);
+        border: none;
+        border-radius: 22px;
+        min-height: calc(100vh - 24px);
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    /* スマホ版建物の画像は非表示 */
+    .hero .bg {
+        display: none;
+    }
+
+    /* -----------------------------------
+       PC：中央の大きな建物画像
+    ----------------------------------- */
+    .pc-building {
+        bottom: 30px;
+        display: block;
+        height: auto;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 87%;
+        z-index: 1;
+    }
+
+   /* -----------------------------------
+       PC：中央の大きな建物画像
+    ----------------------------------- */
+    .pc-building {
+        bottom: 30px;
+        display: block;
+        height: auto;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 87%;
+        z-index: 1;
+    }
+
+    /* PCヘッダー（カーブ状パーツ） */
+    .pc-header {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 500;
+        pointer-events: none;
+    }
+
+    .header-curve {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .header-curve img {
+        width: 100%;
+        display: block;
+    }
+
+    .curve-menu-wrap {
+        position: absolute;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: auto;
+        z-index: 2;
+    }
+
+    .curve-menu {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .curve-menu a {
+        text-decoration: none;
+        font-family: "PaulaLily", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #4e4c8f;
+        white-space: nowrap;
+    }
+
+    .curve-menu a {
+        position: relative;
+        transition: 
+        transform 0.25s ease,
+        color 0.25s ease;
+    }
+
+    .curve-menu a:hover {
+        color: #d26088;              
+        transform: translateY(-3px); 
+    }
+    
+
+    .divider {
+        width: 1.5px;
+        height: 18px;
+        background: #4e4c8f;
+        border-radius: 10px;
+        opacity: 0.8;
+    }
+
+
+    /* メニューの縮小アニメ（画面幅対応） */
+    @media (max-width: 1500px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.81);
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.76);
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.69);
+        }
+    }
+
+    @media (max-width: 950px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.61);
+        }
+    }
+
+   /* -----------------------------------
+   PC表示：中央配置の大型カレンダー
+----------------------------------- */
+
+/* ピンク背景と中央テキストを非表示 */
+.calendar-button-bg,
+.calendar-button-text {
+    display: none;
+}
+
+/* コントロールは残しつつ不可視にする */
+.calendar-control {
+    inset: 0;
+    pointer-events: none; /* クリックを遮らない */
+    position: absolute;
+}
+
+/* 矢印ボタンのみ操作可能にする */
+.calendar-arrow {
+    pointer-events: auto;
+}
+
+/* -----------------------------------
+   カレンダー全体ラッパー（PC用）
+----------------------------------- */
+.calendar-wrapper {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 140px 40px 40px;
+    position: relative;
+    row-gap: 10px;
+}
+
+/* -----------------------------------
+   タイトル
+----------------------------------- */
+.calendar-title {
+    font-size: 28px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* -----------------------------------
+   CSS変数（サイズ制御）
+----------------------------------- */
+:root {
+    --day-size: 50px;
+}
+
+/* -----------------------------------
+   曜日ヘッダー（PC）
+----------------------------------- */
+.calendar-week {
+    column-gap: 35px;
+    display: grid;
+    grid-template-columns: repeat(7, calc(var(--day-size) * 1.4));
+    justify-content: center;
+}
+
+/* -----------------------------------
+   カレンダーグリッド（PC）
+----------------------------------- */
+.calendar-grid {
+    --arrow-offset: 12%;
+    display: grid;
+    gap: 10px 35px;
+    grid-template-columns: repeat(7, calc(var(--day-size) * 1.4));
+    justify-content: center;
+    position: relative;
+}
+
+/* -----------------------------------
+   日付セル（PC）
+----------------------------------- */
+.calendar-day {
+    font-size: 16px;
+    height: var(--day-size);
+    width: calc(var(--day-size) * 1.4);
+}
+
+/* ホバー時の強調表示 */
+.calendar-day:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+}
+
+/* -----------------------------------
+   凡例（横並び・PC）
+----------------------------------- */
+.calendar-legend {
+    font-size: 8px;
+    gap: 24px;
+    justify-content: center;
+    margin: 10px auto 0;
+    max-width: 1080px;
+}
+
+.legend-item {
+    font-size: 15px;
+}
+
+/* -----------------------------------
+   矢印ボタン（PC）
+----------------------------------- */
+.calendar-arrow {
+    align-items: center;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    z-index: 40;
+}
+
+/* 前月ボタン位置 */
+.calendar-arrow.prev {
+    left: -400px;
+}
+
+/* 次月ボタン位置 */
+.calendar-arrow.next {
+    right: -400px;
+}
+
+/* 矢印画像 */
+.calendar-arrow img {
+    height: auto;
+    transition: 0.25s ease;
+    width: 200%;
+}
+
+/* ホバー時拡大 */
+.calendar-arrow:hover img {
+    transform: scale(1.15);
+}
+
+/* -----------------------------------
+   月表示テキスト（矢印横）
+----------------------------------- */
+.calendar-arrow::after {
+    color: #45387D;
+    content: attr(data-month);
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 25px;
+    font-weight: 700;
+    opacity: 0.9;
+    white-space: nowrap;
+}
+
+/* 前月テキスト（左側） */
+.calendar-arrow.prev::after {
+    position: absolute;
+    right: 140%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 次月テキスト（右側） */
+.calendar-arrow.next::after {
+    left: 140%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+  
+
+    /* -----------------------------------
+       PC：インフォボックスとコースは非表示
+    ----------------------------------- */
+    .info-box,
+    .course-grid {
+        display: none;
+    }
+
+    /* -----------------------------------
+       PC：雲の位置調整
+    ----------------------------------- */
+    .cloud-1 {
+        left: 10%;
+        top: 35%;
+        width: 80px;
+    }
+
+    .cloud-2 {
+        left: 30%;
+        top: 25%;
+        width: 70px;
+    }
+
+    .cloud-3 {
+        right: 15%;
+        top: 40%;
+        width: 100px;
+    }
+
+
+    /* -----------------------------------
+       PC：トップのロゴ＋メニュー位置
+    ----------------------------------- */
+    .hero-top {
+        left: 40px;
+        top: 40px;
+        width: calc(100% - 80px);
+    }
+
+   /* ===================================
+    PC：サイドメニュー（スクロール無効）
+    =================================== */
+    .side-menu {
+        overflow: hidden !important;
+    }
+
+    /* ===================================
+    PC：メニューリスト全体
+    =================================== */
+    .menu-list {
+        margin-top: 40px;
+        padding-right: 150px;
+        text-align: right;
+    }
+
+    /* ===================================
+    PC：各行（MAIN + SUB 横並び）
+    =================================== */
+    .menu-list .row {
+        align-items: center;
+        display: flex;
+        flex-direction: row; /* 横並び */
+        justify-content: flex-end;
+        margin: 26px 0 !important;
+    }
+
+    /* ===================================
+    PC：メインテキスト（右側）
+    =================================== */
+    .menu-list .main {
+        font-size: 30px;
+        margin-left: 20px;
+        white-space: nowrap;
+    }
+
+    /* ===================================
+    PC：サブテキスト（左側・横並び）
+    =================================== */
+    .menu-list .sub-wrap {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        margin-right: 100px;
+    }
+
+    .menu-list .sub {
+        font-size: 16px;
+        opacity: 0.9;
+        white-space: nowrap;
+    }
+
+    /* ===================================
+    PC：SNS（独立行）
+    =================================== */
+    .menu-list .row.sns-row {
+        display: block !important;
+        margin-top: 50px !important;
+        text-align: right;
+    }
+
+    .menu-list .sns {
+        color: white !important;
+        display: block !important;
+        font-size: 28px;
+        letter-spacing: 8px;
+        white-space: nowrap;
+    }
+
+    /* ============================
+    PCポップアップ画像（グローバル設定）
+    ============================ */
+    .pc-info-img {
+        height: 220px;
+        opacity: 0;
+        pointer-events: auto;
+        position: fixed;
+        transform: translateY(20px) scale(0.75);
+        width: 220px;
+        z-index: 999;
+    }
+
+    /* ポップアップの登場アニメーション */
+    @keyframes pcBounce {
+        0% {
+            opacity: 0;
+            transform: translateY(20px) scale(0.75);
+        }
+        40% {
+            opacity: 1;
+            transform: translateY(-10px) scale(1.10);
+        }
+        70% {
+            transform: translateY(5px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* ポップアップのループ揺れアニメーション */
+    .pc-info-img.show {
+        animation: pcBounce 0.45s ease forwards;
+    }
+
+    /* ポップアップループアニメーションの定義 */
+    .pc-info-img.bounce-loop {
+        animation: pcBounceLoop 1.3s ease-in-out infinite;
+    }
+
+    .side-menu {
+            overflow: hidden !important;  /* PC: không scroll */
+        }
+
+
+
+    @keyframes pcBounceLoop {
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-8px) scale(1.02);
+        }
+    }
+
+    /* ============================
+    PCバルーン浮遊アニメ
+    ============================ */
+    @keyframes pcFloat {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+
+
+
+

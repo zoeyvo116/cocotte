@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-info.css">
+  <title>Cocotte Information</title>
+</head>
+
+<body>
+
+<!-- =========================
+  サイドメニュー（全画面・共通）
+========================= -->
+<div id="sideMenu" class="side-menu">
+  <button id="closeMenu" class="menu-close">
+    <img src="img/phone/menu-close.svg" alt="close">
+  </button>
+
+  <ul class="side-menu-list">
+    <li class="row">
+      <a href="original.html" class="main">なにたべる？</a>
+    </li>
+
+    <li class="row">
+      <a href="menu.html" class="main">メニュー</a>
+    </li>
+
+    <li class="row">
+      <a href="calendar.html" class="main">カレンダー</a>
+    </li>
+
+    <li class="row">
+      <div class="sub-wrap">
+        <a href="story.html#concept" class="sub">コンセプト</a>
+        <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+        <a href="story.html#product" class="sub">商品詳細</a>
+      </div>
+      <a href="story.html" class="main">ストーリー</a>
+    </li>
+
+    <li class="row">
+      <a href="news.html" class="main">ニュース</a>
+    </li>
+
+    <li class="row">
+      <div class="sub-wrap">
+        <a href="info.html#gallery" class="sub">ギャラリー</a>
+        <a href="info.html#access" class="sub">アクセス情報</a>
+        <a href="info.html#feedback" class="sub">フィードバック</a>
+      </div>
+      <a href="info.html" class="main">インフォメーション</a>
+    </li>
+  </ul>
+</div>
+
+<!-- =========================
+  メインラッパー
+========================= -->
+<div class="wrapper">
+
+  <!-- =========================
+    PC用ヘッダー（装飾＋ナビ）
+  ========================= -->
+  <div class="pc-header">
+    <div class="header-curve">
+      <img src="img/pc/header-curve.svg" alt="Header curve">
+
+      <div class="curve-menu-wrap">
+        <nav class="curve-menu">
+          <a href="original.html">なにたべる？</a>
+          <span class="divider"></span>
+          <a href="menu.html">メニュー</a>
+          <span class="divider"></span>
+          <a href="calendar.html">カレンダー</a>
+          <span class="divider"></span>
+          <a href="story.html">ストーリー</a>
+          <span class="divider"></span>
+          <a href="news.html">ニュース</a>
+          <span class="divider"></span>
+          <a href="info.html">インフォメーション</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+    ヒーロートップ（ロゴ・メニュー）
+  ========================= -->
+  <div class="hero-top">
+    <a href="index-phone.html" class="hero-logo-link">
+      <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+    </a>
+    <img src="img/phone/menu.svg" class="hero-menu" id="openMenu" alt="menu">
+  </div>
+
+  <!-- =========================
+    メインフレーム
+  ========================= -->
+  <div class="pink-frame">
+
+    <!-- =========================
+      ヒーローエリア
+    ========================= -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="hero-clip hero-clip-banner">
+          <!-- PC用背景 -->
+          <div class="info-bg-pc"></div>
+
+          <!-- SP用背景 -->
+          <div class="hero-illust banner-full">
+            <img src="img/info/banner.png" alt="info background">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- =========================
+      ギャラリーセクション
+    ========================= -->
+    <section id="gallery" class="gallery-section">
+
+      <div class="gallery-title-wrap">
+        <h2 class="gallery-title"><span>ギャラリー</span></h2>
+        <p class="gallery-sub">
+          おしゃれな学内店舗や本格的なスイーツの魅力をご紹介！！
+        </p>
+      </div>
+
+      <div class="gallery-mosaic">
+        <div class="gallery-item big-top"></div>
+
+        <div class="gallery-row">
+          <div class="gallery-item small"></div>
+          <div class="gallery-item small"></div>
+        </div>
+
+        <div class="gallery-item big-bottom"></div>
+      </div>
+
+      <section class="gap"></section>
+    </section>
+
+    <!-- =========================
+      ストーリーラップ
+    ========================= -->
+    <div class="story-wrap">
+
+      <!-- =========================
+        アクセス情報
+      ========================= -->
+      <section id="access" class="story-section concept">
+
+        <h2 class="section-title access-title">
+          <span>アクセス情報</span>
+        </h2>
+
+        <div class="story-image map-image">
+          <iframe
+            src="https://www.google.com/maps?q=〒113-0033+東京都文京区本郷3-43-9&output=embed"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <div class="section-inner">
+          <div class="section-text">
+
+            <p class="access-text">
+              <a
+                href="https://www.google.com/maps?q=〒113-0033+東京都文京区本郷3-43-9"
+                target="_blank"
+                rel="noopener"
+                class="access-map-link">
+                <span class="em">〒113-0033 東京都文京区本郷3-43-9</span>
+              </a>
+            </p>
+
+            <p class="access-text">
+              <span class="em">都営地下鉄大江戸線</span><br>
+              本郷三丁目駅 5番出口より徒歩4分<br><br>
+
+              <span class="em">東京メトロ丸ノ内線</span><br>
+              本郷三丁目駅 2番出口より徒歩5分<br><br>
+
+              <span class="em">東京メトロ千代田線</span><br>
+              湯島駅 3番出口より徒歩6分<br><br>
+
+              <span class="em">JR中央線</span><br>
+              御茶ノ水駅 御茶ノ水橋口より徒歩10分<br><br>
+
+              <span class="em">JR山手線・京浜東北線</span><br>
+              御徒町駅より徒歩12分
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="gap"></section>
+
+      
+        <!-- フィードバックセクション -->
+<section id="school" class="story-section school">
+  <div class="section-inner">
+    <h2 class="section-title">
+      <span>フィードバック</span>
+    </h2>
+
+    <p class="feedback-text">
+      ご来店いただいたお客様の声は、<br>
+      私たちにとって大切な学びのひとつです。<br>
+      いただいたフィードバックをもとに、<br>
+      商品やサービスの改善に日々取り組んでいます。
+    </p>
+
+    <div class="feedback-grid">
+
+      <!-- 左：お客様の声 -->
+      <div class="feedback-item">
+        <div class="feedback-image feedback-img-1"></div>
+        <a href="#customer-voice" class="feedback-btn">
+          お客様の<br>フィードバック
+        </a>
+      </div>
+
+      <!-- 右：アンケートフォーム -->
+      <div class="feedback-item">
+        <div class="feedback-image feedback-img-2"></div>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeVZB1BlfrGLPFpRJ8cJxq-px9t7caw8AnGP3-nYOEeHv1lFg/viewform?usp=header"
+          target="_blank"
+          rel="noopener"
+          class="feedback-btn"
+        >
+          ご来店アンケート<br>
+          <small>（アンケートはこちら）</small>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- お客様の声一覧 -->
+    <section class="feedback-section" id="customer-voice">
+
+      <h2 class="feedback-title">お客様の声</h2>
+      <p class="feedback-sub">
+        ご来店いただいたお客様からのご感想をご紹介します
+      </p>
+
+      <div class="feedback-list">
+
+        <!-- フィードバックカード -->
+        <div class="feedback-card">
+          <div class="feedback-star">★★★★★</div>
+          <p class="feedback-text">
+            とても美味しかったです。<br>
+            学生さんの接客も丁寧で、また来たいと思いました。
+          </p>
+          <span class="feedback-user">20代・女性</span>
+        </div>
+
+        <div class="feedback-card">
+          <div class="feedback-star">★★★★☆</div>
+          <p class="feedback-text">
+            店内の雰囲気が良く、落ち着いて過ごせました。
+          </p>
+          <span class="feedback-user">30代・男性</span>
+        </div>
+
+      </div>
+
+      <a href="#" class="feedback-btn-1">
+        他のお客様の声を見る
+      </a>
+
+    </section>
+
+  </div>
+</section>
+
+<!-- セクションエンド（グラデーション背景内） -->
+<section class="story-section end">
+
+  <div class="end-illust">
+    <img src="img/phone/footer.svg" alt="">
+  </div>
+
+  <!-- 雲アニメーション -->
+  <img src="img/phone/cloud1.svg" class="end-cloud cloud-1" alt="">
+  <img src="img/phone/cloud2.svg" class="end-cloud cloud-2" alt="">
+  <img src="img/phone/cloud1.svg" class="end-cloud cloud-3" alt="">
+  <img src="img/phone/cloud2.svg" class="end-cloud cloud-4" alt="">
+
+  <!-- 風船アニメーション -->
+  <img src="img/phone/balloon.svg" class="end-balloon balloon-1" alt="">
+  <img src="img/phone/balloon.svg" class="end-balloon balloon-2" alt="">
+  <img src="img/phone/balloon.svg" class="end-balloon balloon-3" alt="">
+
+</section>
+
+</div><!-- /.story-wrap -->
+
+<!-- フッター（ピンク背景） -->
+      <footer class="story-footer">
+      <div class="footer-menu">
+        <a href="original.html">何食べる？</a>
+        <a href="menu.html">メニュー</a>
+        <a href="calendar.html">カレンダ</a>
+        <a href="story.html">ストーリー</a>
+        <a href="news.html">ニュース</a>
+        <a href="info.html">インフォメーション</a>
+
+      </div>
+    </footer>
+
+
+</div><!-- /.pink-frame -->
+</div><!-- /.wrapper -->
+
+<script src="js/info.js"></script>
+</body>
+</html>

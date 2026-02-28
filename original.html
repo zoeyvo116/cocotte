@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-original.css">
+  <title>Cocotte Original</title>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- =========================
+       PC用ヘッダー
+  ========================= -->
+  <div class="pc-header">
+      <div class="header-curve">
+        <img src="img/pc/header-curve.svg" alt="Header curve">
+
+        <div class="curve-menu-wrap">
+          <nav class="curve-menu">
+            <a href="original.html">なにたべる？</a>
+            <span class="divider"></span>
+
+            <a href="menu.html">メニュー</a>
+            <span class="divider"></span>
+
+            <a href="calendar.html">カレンダー</a>
+            <span class="divider"></span>
+
+            <a href="story.html">ストーリー</a>
+            <span class="divider"></span>
+
+            <a href="news.html">ニュース</a>
+            <span class="divider"></span>
+
+            <a href="info.html">インフォメーション</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+  <!-- =========================
+       ヒーロートップ（ロゴ／メニュー）
+  ========================= -->
+  <div class="hero-top">
+    <a href="index-phone.html" class="hero-logo-link">
+      <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+    </a>
+    <img src="img/phone/menu.svg" class="hero-menu">
+  </div>
+
+  <!-- =========================
+       メインフレーム（ピンク枠）
+  ========================= -->
+  <div class="pink-frame">
+
+    
+    <div class="hero-menu-wrap">
+
+      
+      <section class="hero">
+        <div class="hero-inner">
+
+          <div class="hero-clip">
+
+            <!-- PC用背景 -->
+            <div class="menu-bg-pc"></div>
+
+            <!-- モバイル用背景 -->
+            <div class="hero-illust">
+              <img src="img/phone/ori-bg.svg" alt="">
+            </div>
+
+            <!-- 装飾 -->
+            <img src="img/phone/cloud1.svg" class="cloud cloud-1">
+            <img src="img/phone/cloud2.svg" class="cloud cloud-2">
+            <img src="img/phone/cloud1.svg" class="cloud cloud-3">
+            <img src="img/phone/balloon.svg" class="hero-balloon hero-balloon-1">
+
+            <!-- サイドメニューパネル -->
+            <div id="sideMenu" class="side-menu">
+              <button id="closeMenu" class="menu-close">
+                <img src="img/phone/menu-close.svg" alt="close">
+              </button>
+
+              <ul class="side-menu-list">
+                <li class="row">
+                  <a href="original.html" class="main">なにたべる？</a>
+                </li>
+                <li class="row">
+                  <a href="menu.html" class="main">メニュー</a>
+                </li>
+
+                <li class="row">
+                  <a href="calendar.html" class="main">カレンダー</a>
+                </li>
+
+                <li class="row">
+                  <div class="sub-wrap">
+                    <a href="story.html#concept" class="sub">コンセプト</a>
+                    <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+                    <a href="story.html#product" class="sub">商品詳細</a>
+                  </div>
+                  <a href="story.html" class="main">ストーリー</a>
+                </li>
+
+                
+
+                <li class="row">
+                  <a href="news.html" class="main">ニュース</a>
+                </li>
+
+                <li class="row">
+                  <div class="sub-wrap">
+                    <a href="info.html#gallery" class="sub">ギャラリー</a>
+                    <a href="info.html#access" class="sub">アクセス情報</a>
+                    <a href="info.html#feedback" class="sub">フィードバック</a>
+                  </div>
+                  <a href="info.html" class="main">インフォメーション</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="hero-title">
+              <h1 class="title">本日のおすすめ</h1>
+              <p class="sub">あなたの気分に合わせて選びました</p>
+            </div>
+
+            <button class="start-btn" id="startBtn">
+              <img src="img/phone/ori-startbox.svg" alt="">
+            </button>
+          </div>
+
+         
+          <div class="whitebox">
+            <p class="whitebox-text">
+              今日のあなたにぴったりのスイーツ、<br>
+              一緒に見つけてみませんか？
+            </p>
+          </div>
+
+        </div>
+        
+      </section>
+
+      
+      <div class="menu-wrap">
+
+        <img src="img/phone/balloon.svg" class="balloon balloon-2">
+        <img src="img/phone/balloon.svg" class="balloon balloon-3">
+        <img src="img/phone/balloon.svg" class="balloon balloon-4">
+        <img src="img/phone/balloon.svg" class="balloon balloon-5">
+        
+
+
+        <div class="menu-page">
+          <!-- =========================
+             アンケート
+          ========================= -->
+          <section class="anketo">
+            <div class="anketo-track">
+            <!-- ROAD -->
+            <img src="img/phone/anketo-road.svg" alt="anketo road">
+            
+
+            <div class="anketo-steps">
+
+              <!-- Q1 -->
+              <div class="anketo-step shown active"
+                  data-question="q1"
+                  style="--x:160px; --road-pos: 7;">
+                <p class="question-text">今日は何でリフレッシュしたい？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="q2-a">お腹すいた？</button>
+                  <button class="answer-btn" data-value="b" data-next="q2-b">喉かわいた？</button>
+                </div>
+              </div>
+
+              <!-- Q2 食べ物 -->
+              <div class="anketo-step"
+                  data-question="q2-a"
+                  style="--x:160px; --road-pos: 27;">
+                <p class="question-text">味の好みは？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="q3">甘いものが食べたい</button>
+                  <button class="answer-btn" data-value="b" data-next="q3">さっぱりしたものが食べたい</button>
+                  <button class="answer-btn" data-value="c" data-next="q3"> 和の味で落ち着きたい</button>
+                  <button class="answer-btn" data-value="d" data-next="q3"> 甘すぎないもの・軽く食べたい</button>
+                  <button class="answer-btn" data-value="e" data-next="q3"> しっかり食事したい</button>
+
+                
+                </div>
+              </div>
+
+              <!-- Q3 -->
+              <!-- ========== 食べ物 セット 1 ========== -->
+              <div class="anketo-step"
+                  data-question="q3-food-1"
+                  style="--x:160px; --road-pos: 63;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="q3-food-1">ほろ苦くて、しっかりした甘さ</button>
+                  <button class="answer-btn" data-value="b" data-next="q3-food-1">甘酸っぱくて、後味がすっきり</button>
+                  <button class="answer-btn" data-value="c" data-next="q3-food-1">ミルキーで、やさしい甘さ</button>
+                  <button class="answer-btn" data-value="d" data-next="q3-food-1">香ばしくて、コクがある</button>
+
+                </div>
+              </div>
+
+              <div class="anketo-step"
+                  data-question="q4-food-1"
+                  style="--x:160px; --road-pos: 64;">
+                <p class="question-text">今日はどんな食べ方がいい？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="result-food-1">クリームやなめらかさを楽しみたい</button>
+                  <button class="answer-btn" data-value="b" data-next="result-food-1">しっとりした焼き菓子</button>
+                  <button class="answer-btn" data-value="c" data-next="result-food-1">ずっしり満足感がほしい</button>
+
+                </div>
+              </div>
+
+              <!-- ========== 食べ物 セット 2========== -->
+              <div class="anketo-step"
+                  data-question="q3-food-2"
+                  style="--x:160px; --road-pos: 63;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="q3-food-2">フルーティーで、自然な甘さ</button>
+                  <button class="answer-btn" data-value="b" data-next="q3-food-2">甘酸っぱくて、すっきり</button>
+                  <button class="answer-btn" data-value="c" data-next="q3-food-2">酸味があって、少し大人っぽい</button>
+                  <button class="answer-btn" data-value="d" data-next="q3-food-2">やさしくて、なめらか</button>
+                </div>
+              </div>
+
+              <div class="anketo-step"
+                  data-question="q4-food-2"
+                  style="--x:160px; --road-pos: 64;">
+                <p class="question-text">今日はどんな食べ方がいい？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="result-food-2">ひんやり・冷たい</button>
+                  <button class="answer-btn" data-value="b" data-next="result-food-2">フォークでデザート感</button>
+                  <button class="answer-btn" data-value="c" data-next="result-food-2">クレープで軽く</button>
+
+                </div>
+                </div>
+              </div>
+
+
+
+              <!-- ========== 食べ物 セット 3 ========== -->
+              <div class="anketo-step"
+                  data-question="q3-food-3"
+                  style="--x:160px; --road-pos:63;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="result-food-3">
+                    抹茶の香りを、<br>サクッと楽しみたい
+                  </button>
+                  <button class="answer-btn" data-value="b" data-next="result-food-3">
+                    抹茶で、<br>少し食べごたえがほしい
+                  </button>
+                  <button class="answer-btn" data-value="c" data-next="result-food-3">
+                    甘くて、<br>ちょっと特別感がほしい
+                  </button>
+                </div>
+              </div>
+
+
+              <!-- ========== 食べ物 セット 4 ========== -->
+              <div class="anketo-step"
+                data-question="q3-food-4"
+                style="--x:160px; --road-pos: 63;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="result-food-4">香ばしくて、素朴な甘さ</button>
+                  <button class="answer-btn" data-value="b" data-next="result-food-4">サクッと軽く、間食向き</button>
+                  <button class="answer-btn" data-value="c" data-next="result-food-4">パンとして、しっかり食べたい</button>
+                  <button class="answer-btn" data-value="d" data-next="result-food-4">ちょっとリッチで、特別感</button>
+                  <button class="answer-btn" data-value="e" data-next="result-food-4">細長くて、つまみやすい焼き菓子</button>
+                </div>
+              </div>
+
+              <!-- ========== 食べ物 セット 5 ========== -->
+              <div class="anketo-step"
+                data-question="q3-food-5"
+                style="--x:160px; --road-pos: 63;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-next="result-food-5">サッと食べたい</button>
+                  <button class="answer-btn" data-next="result-food-5">軽めだけど食事感がほしい</button>
+                  <button class="answer-btn" data-next="result-food-5">ごはん系でしっかり食べたい</button>
+                  <button class="answer-btn" data-next="result-food-5">こってりしたものが食べたい</button>
+                  <button class="answer-btn" data-next="result-food-5">肉料理でスタミナをつけたい</button>
+                </div>
+              </div>
+
+              <!-- ========== ドリンク セット ========== -->
+              <div class="anketo-step"
+                  data-question="q2-drink"
+                  style="--x:160px; --road-pos: 28;">
+                <p class="question-text">今の気分に一番近いのはどれ？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="q3-drink">
+                   さっぱりして、喉を潤したい
+                  </button>
+                  <button class="answer-btn" data-value="b" data-next="q3-drink">
+                    目を覚ましたい
+                  </button>
+                  <button class="answer-btn" data-value="c" data-next="q3-drink">
+                    やさしく落ち着きたい
+                  </button>
+                  <button class="answer-btn" data-value="d" data-next="q3-drink">
+                    冷たくてデザート感がほしい
+                  </button>
+                </div>
+              </div>
+
+              
+              <div class="anketo-step"
+                  data-question="q3-drink"
+                  style="--x:160px; --road-pos: 64;">
+                <p class="question-text">今はどんな飲み心地がいい？</p>
+                <div class="answer-list">
+                  <button class="answer-btn" data-value="a" data-next="result-drink">
+                    軽くてすっきり
+                  </button>
+                  <button class="answer-btn" data-value="b" data-next="result-drink">
+                    ほどよくコクがある
+                  </button>
+                </div>
+              </div>
+
+
+          </section>
+
+            
+
+          <!-- =========================
+               結果表示
+          ========================= -->
+          <section class="result">
+              <div class="result-circle-wrap">
+                <button class="result-nav prev">
+                  <img src="img/phone/menu-arrow-left.svg">
+                </button>
+
+                <div class="result-circle" id="menuImage"></div>
+
+                <button class="result-nav next">
+                  <img src="img/phone/menu-arrow-right.svg">
+                </button>
+              </div>
+
+              <p class="result-sub">本日のおすすめは：</p>
+
+              <div class="result-main">
+                <span class="result-name">チョコラングドシャ</span>
+                <img src="img/phone/chara-brown.svg" class="result-mascot">
+              </div>
+
+              <div class="result-actions">
+                <a href="menu.html" class="result-btn">
+                  <img src="img/phone/ori-button-2.svg" class="btn-icon">
+                  メニューに行く
+                </a>
+
+                <button class="result-btn retry">
+                  <img src="img/phone/ori-button-1.svg" class="btn-icon">
+                  もう一回やる
+                </button>
+              </div>
+          </section>
+
+          
+        </div>
+        <!-- =========================
+             コースパネル
+        ========================= -->
+        <section class="course-panel">
+
+          <div class="course-grid">
+            <a href="menu.html#patisserie" class="course-card" data-course="patisserie">
+              <img src="img/phone/footer-chara-green.svg" alt="パティシエコース">
+            </a>
+
+            <a href="menu.html#barista" class="course-card" data-course="barista">
+              <img src="img/phone/footer-chara-brown.svg" alt="カフェ＆バリスタコース">
+            </a>
+
+            <a href="menu.html#bread" class="course-card" data-course="bread">
+              <img src="img/phone/footer-chara-orange.svg" alt="ブーランジェコース">
+            </a>
+
+            <a href="menu.html#creator" class="course-card" data-course="creator">
+              <img src="img/phone/footer-chara-pink.svg" alt="スイーツカフェクリエイターコース">
+            </a>
+          </div>
+
+
+          <div class="course-links">
+
+            <a href="https://www.instagram.com/cocotte__2025/" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-1.svg" alt="">
+              <span>Instagram</span>
+            </a>
+
+            <a href="https://www.sanko.ac.jp/tokyo-sweets" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-2.svg" alt="">
+              <span>東京スイーツ＆カフェ専門学校</span>
+            </a>
+
+            <a href="index-phone.html" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-3.svg" alt="">
+              <span>通販サイト</span>
+            </a>
+
+          </div>
+        </section>
+       
+        <section class="story-section end">
+          <div class="end-illust">
+            <img src="img/phone/footer.svg" alt="">
+          </div>
+
+          <img src="img/phone/cloud1.svg" class="end-cloud cloud-1">
+          <img src="img/phone/cloud2.svg" class="end-cloud cloud-2">
+          <img src="img/phone/cloud1.svg" class="end-cloud cloud-3">
+          <img src="img/phone/cloud2.svg" class="end-cloud cloud-4">
+
+          <img src="img/phone/balloon.svg" class="end-balloon end-balloon-1">
+          <img src="img/phone/balloon.svg" class="end-balloon end-balloon-2">
+          <img src="img/phone/balloon.svg" class="end-balloon end-balloon-3">
+        </section>
+      
+        
+
+      </div>
+    
+    <footer class="story-footer">
+      <div class="footer-menu">
+        <a href="original.html">何食べる？</a>
+        <a href="menu.html">メニュー</a>
+        <a href="calendar.html">カレンダ</a>
+        <a href="story.html">ストーリー</a>
+        <a href="news.html">ニュース</a>
+        <a href="info.html">インフォメーション</a>
+
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+
+<script src="js/original.js"></script>
+</body>
+</html>

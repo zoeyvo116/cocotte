@@ -1,0 +1,1430 @@
+/* ===================================
+   リセット（全ブラウザ初期化）
+=================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffc1bf;
+  display: flex;
+  justify-content: center;
+  font-family: "MPLUSRounded", sans-serif;
+}
+
+
+
+
+
+/* ===================================
+フォント
+=================================== */
+@font-face {
+  font-family: 'PaulaLily';
+  font-weight: 700;
+  src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MPLUSRounded';
+  font-weight: 400;
+  src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'MPLUSRounded';
+  font-weight: 700;
+  src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
+}
+
+/* ===================================
+   全体ラッパー（スマホ幅制御）
+=================================== */
+.wrapper {
+  max-width: 430px;
+  overflow: visible;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 80px;
+  position: relative;
+  width: 100%;
+}
+
+/* ===================================
+   メインフレーム
+=================================== */
+.pink-frame {
+  background: #ffc1bf;
+  border: 1px solid #8b5a3c;
+  border-radius: 20px;
+  overflow: visible;
+  position: relative;
+}
+
+.pc-header {
+  display: none;
+}
+
+
+/* ===================================
+   ヒーロートップ（ロゴ・メニュー）
+=================================== */
+
+.hero-top {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 24px;
+  position: absolute;
+  top: 24px;
+  width: calc(100% - 48px);
+  z-index: 100;
+}
+
+.hero-logo { width: 45px; }
+.hero-menu {
+  cursor: pointer;
+  width: 28px;
+}
+
+/* ===================================
+   HERO
+=================================== */
+.hero {
+  background: transparent;
+  position: relative;
+}
+
+.hero-inner {
+  background: transparent;
+}
+
+/* ===================================
+   HERO クリップ領域
+=================================== */
+.hero-clip {
+  aspect-ratio: 375 / 520;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 背景イラスト */
+.hero-illust {
+  inset: 0;
+  position: absolute;
+}
+
+.hero-illust img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* ===================================
+   装飾（デコレーション）
+=================================== */
+/* =========================
+   ヒーロー：雲
+========================= */
+.hero-cloud {
+  animation: heroCloudMove 18s linear infinite;
+  opacity: 0.9;
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+}
+
+.hero-cloud.cloud-1 {
+  left: 45%;
+  top: 30%;
+  width: 8%;
+}
+
+.hero-cloud.cloud-2 {
+  animation-duration: 23s;
+  left: 10%;
+  top: 65%;
+  width: 20%;
+}
+
+.hero-cloud.cloud-3 {
+  right: 15%;
+  top: 40%;
+  width: 12%;
+}
+
+/* 雲の横移動アニメーション */
+@keyframes heroCloudMove {
+  from { transform: translateX(-20px); }
+  to   { transform: translateX(40px); }
+}
+
+/* =========================
+   ヒーロー：気球
+========================= */
+.hero-balloon {
+  animation: heroBalloonFloat 3.5s ease-in-out infinite;
+  pointer-events: none;
+  position: absolute;
+  width: 6%;
+  z-index: 6;
+}
+
+.hero-balloon.balloon-1 {
+  right: 20%;
+  top: 28%;
+}
+
+/* 気球の上下浮遊アニメーション */
+@keyframes heroBalloonFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===================================
+   ヒーロータイトル
+=================================== */
+.hero-title {
+  left: 38%;
+  position: absolute;
+  text-align: center;
+  top: 31%;
+  z-index: 6;
+}
+
+.hero-title .title {
+  color: #fff;
+  display: inline-block;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition:
+    text-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(.34,1.56,.64,1);
+}
+
+/* ===================================
+   クエスチョンマーク（クリック可能アイコン）
+=================================== */
+.qmark {
+    animation: qBob 1.4s ease-in-out infinite;
+    cursor: pointer;
+    position: absolute;
+    width: 25%;
+    z-index: 60;
+}
+
+@keyframes qBob {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+/* --- 個別位置設定（スマホ用） --- */
+.q-grid1 { left: 5%; top: 60%; }
+.q-grid2  { left: 23.5%; top: 72%; }
+.q-grid3  { right: 24.5%; top: 72%; }
+.q-grid4   { left: 70%;   top: 60%; }
+
+/* ===================================
+   サイドメニュー（右側からスライド表示）
+=================================== */
+.side-menu {
+    background: #d86b8a;
+    border-bottom-left-radius: 180px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    padding: 30px 20px;
+    transition: right 0.4s ease;
+    z-index: 9999;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff80 transparent;
+}
+
+/* メニュー展開時 */
+.side-menu.active {
+    right: 0;
+}
+
+/* ===================================
+   メニューの閉じるボタン（×）
+=================================== */
+.menu-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 28px;
+}
+
+/* ===================================
+   モバイルメニューリスト
+=================================== */
+.side-menu-list {
+    text-align: right;
+}
+
+/* ===================================
+   各メニュー行（MAIN + SUB）
+=================================== */
+.side-menu-list .row {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 40px 60px;
+    text-align: right;
+}
+
+/* MAIN テキスト */
+.side-menu-list .main {
+    color: white;
+    font-family: "PaulaLily", sans-serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* SUB グループ */
+.side-menu-list .sub-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* SUB テキスト */
+.side-menu-list .sub {
+    color: white;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 16px;
+    opacity: 0.85;
+}
+
+.side-menu-list .main {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform-origin: right center;
+}
+
+.side-menu-list .row:active .main {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.side-menu-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+
+/* ===================================
+   セクション背景
+=================================== */
+.menu-wrap {
+  background: linear-gradient(
+    to right,
+    #E8E8E8 0%,
+    #DCF3FF 100%
+  );
+}
+
+.menu-page {
+  margin: 0 auto;
+  max-width: 390px;
+  padding: 24px 16px 40px;
+}
+
+/* =========================
+   コース切り替えエリア
+========================= */
+.course-switch {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 24px 2px 8px;
+}
+
+/* 矢印ボタン */
+.course-arrow {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.course-arrow img {
+  height: auto;
+  width: 28px;
+}
+
+/* 中央ブロック */
+.course-center {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* コースタイトル */
+.course-title {
+  text-align: center;
+}
+
+.course-title span {
+  background-image: linear-gradient(#EACD92, #EACD92);
+  background-position: center 90%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  color: #f15b6c;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* コース名画像 */
+.course-title-img {
+  height: auto;
+  width: 160px;
+}
+
+/* コースラベル画像（「コース」表記） */
+.course-label-img {
+  height: auto;
+  width: 64px;
+}
+
+/* =========================
+   コース説明ボックス
+========================= */
+.course-desc {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 2px;
+}
+
+.desc-box {
+  background: #f2fbf9;
+  border-radius: 999px;
+  color: #444;
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 1.7;
+  padding: 25px 25px;
+  text-align: center;
+}
+
+/* =========================
+   メニューレイアウト
+========================= */
+.menu-layout {
+  display: block;
+}
+
+/* メニュータイトル */
+.menu-title {
+  margin-bottom: 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.menu-title span {
+  background-image: linear-gradient(#EACD92, #EACD92);
+  background-position: center 90%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  color: #f15b6c;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+/* =========================
+   フレーム制御
+========================= */
+.pink-frame {
+  overflow: hidden;
+}
+
+
+/* ===== ギャラリーレイアウト ===== */
+.menu-gallery {
+  text-align: center;
+}
+
+/* ===== メイン画像ラッパー（大きな丸画像） ===== */
+.menu-circle-wrap {
+  height: 260px;
+  margin: 0 auto;
+  position: relative;
+  width: 330px;
+}
+
+/* ===== ナビゲーション矢印（共通） ===== */
+.menu-nav {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #f15b6c;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 700;
+  height: 36px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  z-index: 3; /* 枠線より前面 */
+}
+
+/* ===== 左右ナビゲーション ===== */
+.menu-nav.prev {
+  left: -18px;
+}
+
+.menu-nav.next {
+  right: -10px;
+}
+
+.menu-nav img {
+  display: block;
+  height: 120%;
+  object-fit: contain;
+  width: 120%;
+}
+
+/* ===== メニュー画像（円形） ===== */
+.menu-circle {
+  background-position: center;
+  background-size: cover;
+  border-radius: 45%;
+  height: 100%;
+  outline: 6px solid #fff;
+  position: relative;
+  transition: border-radius 0.35s ease;
+  width: 100%;
+  z-index: 2; /* 画像を前面に */
+}
+
+.menu-circle:hover {
+  border-radius:
+    45% 55% 45% 60% /
+    40% 46% 54% 52%;
+}
+
+/* ===== メニュー名 ===== */
+.menu-name h3 {
+  color: #f15b6c;
+  font-family: "MPPlusRounded", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  margin-top: 20px;
+}
+
+/* ===== タグ一覧 ===== */
+.menu-tag {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;          /* 自動改行 */
+  gap: 20px;                /* タグ間隔 */
+  justify-content: center;
+  margin: 20px 0 28px;
+}
+
+.tag {
+  background: #f05a5a;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 1px #ffffff,      /* 白枠 */
+    0 0 0 2px #3A3A3A;      /* 黒枠 */
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 70px;
+  padding: 3px 1px;
+  text-align: center;
+}
+
+/* ===== 価格表示 ===== */
+.menu-price {
+  display: flex;
+  justify-content: center;
+  margin: 12px 0 16px;
+}
+
+.menu-price img {
+  height: auto;
+  width: 150px;
+}
+
+#menuPrice {
+  display: none;
+}
+
+#menuPrice[src] {
+  display: block;
+}
+
+/* ===== 詳細リンク ===== */
+.menu-more {
+  color: #f15b6c;
+  cursor: pointer;
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 32px auto 0;
+  text-align: center;
+}
+
+.menu-more:hover {
+  opacity: 0.7;
+}
+
+/* ===== サムネイルアニメーション ===== */
+.menu-item .thumb {
+  transition: border-radius 0.35s ease;
+}
+
+.menu-item:hover .thumb {
+  border-radius:
+    45% 55% 45% 60% /
+    40% 46% 54% 52%;
+}
+
+/* ===== ページャー ===== */
+.menu-pager {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.pager-btn {
+  background: none;
+  border: none;
+  color: #f15b6c;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.pager-btn:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.pager-info {
+  color: #f15b6c;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =========================
+   メニューグリッド強制レイアウト（上書き）
+========================= */
+
+/* メニュー一覧をグリッド表示 */
+.menu-list {
+  align-items: center;
+  column-gap: 35px;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  margin-top: 40px;
+  row-gap: 15px;
+}
+
+/* 各メニューアイテム */
+.menu-item {
+  display: block !important;
+  height: auto !important;
+  max-width: none !important;
+  text-align: center;
+  width: auto !important;
+}
+
+/* サムネイル画像（円形） */
+.menu-item .thumb {
+  background-position: center;
+  background-size: cover;
+  border-radius: 45%;
+  height: 130px;
+  margin: 0 auto 10px;
+  outline: 4px solid #fff;
+  width: 150px;
+}
+
+/* メニュー名テキスト */
+.menu-item p {
+  color: #f15b6c;
+  display: block !important;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* =========================
+   コースパネル
+========================= */
+.course-panel {
+  padding: 60px 20px 80px;
+}
+
+/* 6コース用グリッド */
+.course-grid {
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0;
+  padding: 0 24px;
+  row-gap: 0;
+}
+
+/* コースカード */
+.course-card {
+  align-items: center;
+  display: block;
+  margin: 0 auto;
+}
+
+/* コース画像 */
+.course-card img {
+  bottom: 0;
+  display: block;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  width: 90%;
+}
+
+/* ホバー時の浮き上がり */
+.course-card:hover {
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+/* =========================
+   コースリンク
+========================= */
+.course-links {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 各リンクボタン */
+.course-link {
+  align-items: center;
+  background: #fff;
+  border: 1px solid black;
+  border-radius: 999px;
+  color: #333;
+  display: flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 8px;
+  height: 60px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  width: 320px;
+}
+
+/* リンク内アイコン */
+.course-link img {
+  display: block;
+  height: 18px;
+  transition: transform 0.25s ease;
+  width: 18px;
+}
+
+/* ホバー時（押し込み） */
+.course-link:hover {
+  transform: scale(0.96);
+}
+
+/* 背景スライド演出 */
+.course-link::before {
+  border-radius: inherit;
+  content: "";
+  inset: 0;
+  opacity: 0.12;
+  position: absolute;
+  transform: translateX(-100%);
+  transition: transform 0.25s ease;
+}
+
+/* アイコン回転 */
+.course-link:hover img {
+  transform: rotate(-8deg) scale(1.1);
+}
+
+/* =========================
+   セクション終端
+========================= */
+.end-illust {
+  background: linear-gradient(
+    to right,
+    #E8E8E8 0%,
+    #DCF3FF 100%
+  );
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.end-illust img {
+  display: block;
+  width: 100%;
+}
+
+.story-section.end {
+  overflow: hidden;
+  padding-bottom: 0;
+  padding-top: 0;
+  position: relative;
+}
+
+/* =========================
+   フローティング装飾
+========================= */
+.end-cloud,
+.end-balloon {
+  position: absolute;
+  z-index: 2;
+}
+
+/* 雲 */
+.end-cloud {
+  animation: cloudMove 20s linear infinite;
+  opacity: 1;
+}
+
+.end-cloud.cloud-1 { left: 20%; top: 0; width: 85px; }
+.end-cloud.cloud-2 { left: 15%; top: 85px; width: 45px; animation-duration: 26s; }
+.end-cloud.cloud-3 { left: 60%; top: 30px; width: 55px; }
+.end-cloud.cloud-4 { left: 85%; top: -15px; width: 30px; animation-duration: 26s; }
+
+/* 風船 */
+.end-balloon {
+  animation: balloonFloat 4s ease-in-out infinite;
+}
+
+.balloon-1 { left: 10%; top: 10px; width: 23px; }
+.balloon-2 { left: 35%; top: 50px; width: 15px; animation-delay: 1s; }
+.balloon-3 { left: 90%; top: 30px; width: 18px; animation-delay: 2s; }
+
+/* アニメーション */
+@keyframes cloudMove {
+  from { transform: translateX(-20px); }
+  to   { transform: translateX(40px); }
+}
+
+@keyframes balloonFloat {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-8px); }
+}
+
+
+/* =========================
+   フッター
+========================= */
+.story-footer {
+  background: #f37c86;
+  padding: 24px 0;
+  text-align: center;
+}
+
+/* フッターメニュー */
+.footer-menu {
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+.footer-menu a {
+  color: #fff;
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 14px;
+  text-decoration: none;
+}
+
+.footer-menu a:last-child {
+  margin-bottom: 0;
+}
+
+/* =====================================================
+   PCレスポンシブ（1024px以上）
+===================================================== */
+@media (min-width: 1024px) {
+
+  /* =========================
+     BODY / WRAPPER
+  ========================= */
+  body {
+    background: #ffc1bf;
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .wrapper {
+    max-width: 1920px;
+    padding: 12px;
+    
+  }
+
+  .pink-frame {
+    background: transparent;
+    border: none;
+    overflow: visible; 
+  }
+
+   /* =========================
+     ヒーロートップ（ロゴ・メニュー）
+  ========================= */
+  .hero-top {
+    left: 40px;
+    top: 40px;
+    width: calc(100% - 80px);
+  }
+
+  .hero-logo {
+    width: 53px;
+  }
+
+  .hero-menu {
+    width: 35px;
+  }
+
+  /* =========================
+     HERO + MENU ラップ（PC用背景）
+  ========================= */
+  .hero-menu-wrap {
+    background: linear-gradient(
+      to right,
+      #E8E8E8 0%,
+      #DCF3FF 100%
+    );
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  /* =========================
+     HERO（PC）
+  ========================= */
+  .hero {
+    background: transparent;
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
+
+  .hero-clip {
+    aspect-ratio: 1920 / 1080;
+    border-radius: 22px 22px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+  }
+
+  /* モバイル背景を非表示 */
+  .hero-illust {
+    display: none;
+  }
+
+  /* PC用背景 */
+  .menu-bg-pc {
+    background: url("../img/pc/menu-bg.svg") center top no-repeat;
+    background-size: contain;
+    inset: 0;
+    position: absolute;
+    z-index: 1;
+  }
+
+
+  /* =========================
+     HERO タイトル
+  ========================= */
+  .hero-title {
+    left: 46.5%;
+    position: absolute;
+    top: 34.5%;
+    z-index: 6;
+  }
+
+  .hero-title .title {
+    color: #fff;
+    display: inline-block;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 25px;
+    line-height: 1.25em;
+    text-decoration: none;
+    white-space: nowrap;
+
+    transition:
+      text-shadow 0.25s ease,
+      transform 0.25s cubic-bezier(.34,1.56,.64,1);
+  }
+
+  /* ホバー（PC） */
+  .hero-title .title:hover {
+    text-shadow:
+      0 2px 0 rgba(255,255,255,0.25),
+      0 6px 18px rgba(255,180,200,0.55);
+    transform: rotate(-2deg) scale(1.08);
+  }
+
+  /* タップ（モバイル想定） */
+  .hero-title .title:active {
+    text-shadow: none;
+    transform: scale(0.95);
+  }
+
+  /* =========================
+     クエスチョンマーク（PC）
+  ========================= */
+  .qmark {
+    animation: qBob 1.4s ease-in-out infinite;
+    position: absolute;
+    width: 10%;
+    z-index: 6;
+  }
+
+  .q-grid1 { left: 15.25%; top: 47%; }
+  .q-grid2 { left: 31.5%;  top: 54%; }
+  .q-grid3 { right: 38%;   top: 54%; }
+  .q-grid4 { left: 76%;    top: 47%; }
+
+/* =========================
+   PCヘッダー
+========================= */
+/* =========================
+     PC用ヘッダー
+  ========================= */
+  .pc-header {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+  }
+
+  .header-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .header-curve img {
+    width: 100%;
+    display: block;
+  }
+
+  .curve-menu-wrap {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .curve-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .curve-menu a {
+    font-family: "PaulaLily", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #4e4c8f;
+    white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .curve-menu a:hover {
+    color: #d26088;
+    transform: translateY(-3px);
+  }
+
+  .divider {
+    width: 1px;
+    height: 11px;
+    background: #4e4c8f;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+
+
+    /* メニューの縮小アニメ（画面幅対応） */
+    @media (max-width: 1500px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.81);
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.76);
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.69);
+        }
+    }
+
+    @media (max-width: 950px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.61);
+        }
+    }
+
+/* =========================
+   メニュー全体ラップ
+========================= */
+.menu-wrap {
+  background: transparent;
+  margin-top: 0;
+}
+
+.menu-page {
+  margin: 0;
+  max-width: none;
+  padding: 0;
+}
+
+.menu-layout {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.menu-title {
+  margin-bottom: 10px;
+  margin-left: 150px;
+  margin-top: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+.menu-title span {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.menu-left {
+  flex-shrink: 0;
+  width: 600px;
+}
+
+.menu-right {
+  flex: 1;
+  position: relative;
+}
+
+.menu-list {
+  column-gap: 100px;
+  grid-template-columns: repeat(3, minmax(140px, 140px));
+  justify-content: start;   /* 左寄せ固定 */
+  row-gap: 12px;
+}
+
+.menu-item {
+  width: 140px;
+}
+
+.menu-pager {
+  align-items: center;
+  margin: 0;
+  position: absolute;
+  right: 10px;
+  top: 0;
+  transform: translateY(-50%);
+}
+
+.menu-right {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  margin-right: 180px;
+}
+
+/* ===================================
+   PC：サイドメニュー全体
+=================================== */
+.side-menu-list {
+  margin-top: 40px;
+  padding-right: 150px;
+  text-align: right;
+}
+
+/* ===================================
+   PC：各行（MAIN＋SUB 横並び）
+=================================== */
+.side-menu-list .row {
+  align-items: center;
+  display: flex;
+  flex-direction: row; /* 横並び */
+  justify-content: flex-end;
+  margin: 26px 0 !important;
+}
+
+/* ===================================
+   PC：メインテキスト（右側）
+=================================== */
+.side-menu-list .main {
+  font-size: 30px;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+/* ===================================
+   PC：サブテキスト（左側・横並び）
+=================================== */
+.side-menu-list .sub-wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+  margin-right: 100px;
+}
+
+.side-menu-list .sub {
+  font-size: 16px;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+
+    /* =========================
+   コース全体レイアウト（PC）
+========================= */
+.course-pc-layout {
+  align-items: start;
+  display: grid;
+  gap: 80px;
+  grid-template-columns: 260px 2fr;
+  margin: 32px auto 80px;
+  padding: 0 24px;
+  width: min(1400px, 100vw);
+}
+
+/* =========================
+   コース切り替え（PC）
+========================= */
+.course-switch {
+  align-items: center;
+  column-gap: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  transform: translateY(-28px);
+}
+
+/* 矢印表示（PC） */
+.course-arrow {
+  display: block;
+}
+
+/* =========================
+   コース中央ブロック
+========================= */
+.course-center {
+  align-items: flex-start;
+  justify-self: center;
+  min-width: 420px;
+  padding-left: 40px;
+  text-align: left;
+}
+
+/* コースタイトル */
+.course-title {
+  text-align: left;
+}
+
+.course-title span {
+  font-size: 30px;
+  white-space: normal;
+}
+
+/* コースラベル画像 */
+.course-label-img {
+  width: 100px;
+}
+
+/* =========================
+   コース説明文（PCグリッド）
+========================= */
+.course-desc {
+  display: grid;
+  gap: 28px 32px;
+  grid-template-columns: repeat(2, minmax(360px, 1fr));
+  margin-left: auto;
+  max-width: 820px;
+  padding: 0;
+}
+
+/* 説明ボックス */
+.desc-box {
+  background: #eef6f3;
+  border-radius: 999px;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.8;
+  padding: 40px 50px;
+  text-align: left;
+}
+
+/* =========================
+   コースパネル
+========================= */
+.course-panel {
+  margin: 0 auto;
+  max-width: 700px;
+  padding: 80px 0 60px;
+}
+
+/* =========================
+   コース一覧（カード）
+========================= */
+.course-grid {
+  align-items: flex-end;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  margin-top: 120px;
+  padding: 0;
+}
+
+.course-card {
+  background: transparent;
+  position: relative;
+  width: 18%;
+}
+
+.course-card img {
+  display: block;
+  width: 100%;
+}
+
+/* =========================
+   コースリンク（PC）
+========================= */
+.course-links {
+  align-items: center;
+  background: #fff;
+  border: 2px solid black;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: row;
+  gap: 28px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px 32px;
+}
+
+.course-link {
+  background: transparent;
+  border: none;
+  height: 40px;
+  padding: 0 10px;
+}
+
+.course-link img {
+  height: 20px;
+  width: 20px;
+}
+
+/* リンク区切り線 */
+.course-link:not(:last-child)::after {
+  background: #ccc;
+  content: "";
+  display: block;
+  height: 18px;
+  margin-left: 28px;
+  width: 1px;
+}
+
+/* =========================
+   フォーカス演出
+========================= */
+.course-switch.focus {
+  animation: focusFlash 0.7s ease;
+}
+
+@keyframes focusFlash {
+  0% {
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transform: scale(1);
+  }
+  40% {
+    box-shadow: 0 0 25px rgba(255,120,150,.5);
+    transform: scale(1.04);
+  }
+  100% {
+    box-shadow: none;
+    transform: scale(1);
+  }
+}
+
+/* =========================
+   フッター画像（PC）
+========================= */
+.end-illust img {
+  content: url("../img/pc/footer.svg");
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* =========================
+   フッターメニュー（PC）
+========================= */
+.footer-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 80px;
+  height: 120px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+.footer-menu a {
+  font-weight: 600;
+}
+
+

@@ -1,0 +1,1033 @@
+/* ===================================
+   リセット（全ブラウザ初期化）
+=================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  background: #ffc1bf;
+  margin: 0;
+  font-family: "MPLUSRounded", sans-serif;
+}
+
+/* ===================================
+   見出し用フォント PaulaLily
+=================================== */
+@font-face {
+    font-family: 'PaulaLily';
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+}
+
+/* ===================================
+   本文用フォント M PLUS Rounded
+=================================== */
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 100;
+    src: url('../fonts/MPLUSRounded1c-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 300;
+    src: url('../fonts/MPLUSRounded1c-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 400;
+    src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 500;
+    src: url('../fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 700;
+    src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'MPLUSRounded';
+    font-weight: 900;
+    src: url('../fonts/MPLUSRounded1c-Black.ttf') format('truetype');
+}
+
+/* ===================================
+   全体ラッパー（スマホ幅制御）
+=================================== */
+.wrapper {
+  max-width: 430px;
+  margin: 0 auto;
+  padding: 12px;
+  position: relative;
+  
+}
+
+/* ===================================
+   ヒーロー（大きいメインビジュアル）
+=================================== */
+.hero {
+    background: #ffffff;
+    border: 1px solid #8b5a3c;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* PC用要素（初期は非表示） */
+.pc-building {
+    display: none;
+}
+
+.pc-header {
+    display: none;
+}
+
+.pc-balloon1,
+.pc-balloon2 {
+    display: none;
+}
+
+/* 背景ビル（モバイル） */
+.bg {
+    display: block;
+    width: 100%;
+}
+
+/* ===================================
+   ヒーロー内ヘッダー（ロゴ・メニュー）
+=================================== */
+.hero-top {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    left: 24px;
+    position: absolute;
+    top: 24px;
+    width: calc(100% - 52px);
+    z-index: 50;
+}
+
+.hero-logo {
+    width: 45px;
+}
+
+.hero-menu {
+    animation: floatMenu 3s ease-in-out infinite;
+    cursor: pointer;
+    width: 28px;
+}
+
+/* ===================================
+   雲アニメーション（背景の動き）
+=================================== */
+.cloud {
+    animation: cloudMove 18s linear infinite;
+    opacity: 0.9;
+    position: absolute;
+}
+
+@keyframes cloudMove {
+    from { transform: translateX(-20px); }
+    to   { transform: translateX(40px); }
+}
+
+.cloud-1 {
+    left: 45%;
+    top: 6%;
+    width: 8%;
+}
+
+.cloud-2 {
+    animation-duration: 23s;
+    left: 10%;
+    top: 32%;
+    width: 20%;
+}
+
+.cloud-3 {
+    right: 8%;
+    top: 23%;
+    width: 12%;
+}
+
+/* ===================================
+   気球アニメーション（揺れる動き）
+=================================== */
+.balloon {
+    animation: float 3.5s ease-in-out infinite;
+    left: 10%;
+    position: absolute;
+    top: 25%;
+    width: 5%;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-8px); }
+}
+
+/* ===================================
+   トラックのアニメーション（ポストへ移動）
+=================================== */
+.truck {
+    animation: truckToMailbox 12s ease-out forwards;
+    bottom: 22%;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 18%;
+}
+
+@keyframes truckToMailbox {
+    0%   { transform: translateX(-50%); }
+    75%  { transform: translateX(-140%); }
+    100% { transform: translateX(-140%); }
+}
+
+/* ===================================
+   クエスチョンマーク（クリック可能アイコン）
+=================================== */
+.qmark {
+    animation: qBob 1.4s ease-in-out infinite;
+    cursor: pointer;
+    position: absolute;
+    width: 8%;
+    z-index: 60;
+}
+
+@keyframes qBob {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+/* --- 個別位置設定（スマホ用） --- */
+.q-green  { left: 39.5%; top: 72%; }
+.q-pink   { left: 37%;  top: 19%; }
+.q-orange { right: 14.5%; top: 67%; }
+.q-brown  { right: 11.5%; top: 40%; }
+.q-post   { bottom: 28%; left: 6.5%; }
+.q-dark   { bottom: 45%; left: 38%; }
+
+/* ===================================
+   情報ボックス（Qマークを押すと出る画像）
+=================================== */
+.info-box {
+    margin-bottom: -30px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    top: -70px;
+    z-index: 100;
+}
+
+.info-img {
+    display: block;
+    margin: 0 auto;
+    transition: 0.25s ease;
+    width: 70%;
+}
+
+/* ===================================
+   コースボタン（4種類のコースの一覧）
+=================================== */
+.course-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.course-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 56px;
+  background: #ffd6dc;
+  border: 1px solid #7a4a4a;
+  border-radius: 22px;
+
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #7a4a4a;
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+}
+
+.course-btn:active {
+  transform: scale(0.96);
+  opacity: 0.85;
+}
+
+
+/* ===================================
+   サイドメニュー（右側からスライド表示）
+=================================== */
+.side-menu {
+    background: #d86b8a;
+    border-bottom-left-radius: 180px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    padding: 30px 20px;
+    transition: right 0.4s ease;
+    z-index: 9999;
+
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ffffff80 transparent;
+}
+
+/* メニュー展開時 */
+.side-menu.active {
+    right: 0;
+}
+
+/* ===================================
+   メニューの閉じるボタン（×）
+=================================== */
+.menu-close {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 28px;
+}
+
+/* ===================================
+   モバイルメニューリスト
+=================================== */
+.menu-list {
+    text-align: right;
+}
+
+/* ===================================
+   各メニュー行（MAIN + SUB）
+=================================== */
+.menu-list .row {
+    display: flex;
+    flex-direction: column-reverse;
+    margin: 40px 60px;
+    text-align: right;
+}
+
+/* MAIN テキスト */
+.menu-list .main {
+    color: white;
+    font-family: "PaulaLily", sans-serif;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+/* SUB グループ */
+.menu-list .sub-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* SUB テキスト */
+.menu-list .sub {
+    color: white;
+    font-family: "MPLUSRounded", sans-serif;
+    font-size: 16px;
+    opacity: 0.85;
+}
+
+.menu-list .main {
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  transform-origin: right center;
+}
+
+.menu-list .row:active .main {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+.menu-list a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.loading-counter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: "PaulaLily", sans-serif;
+  font-size: 30px;
+  letter-spacing: 4px;
+  color: #d26088;
+
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+body.hide-counter .loading-counter {
+  opacity: 0;
+}
+
+/* =========================
+   ローディング：ロゴ
+========================= */
+.loading-inner {
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.loading-logo {
+  left: 50%;
+  opacity: 0;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.6);
+  width: 90px;
+}
+
+body.show-logo .loading-logo {
+  animation: logoPop 1s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes logoPop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* =========================
+   ローディング：バナー
+========================= */
+.loading-screen {
+  align-items: center;
+  background: #ffc1bf;
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  position: fixed;
+  z-index: 99999;
+}
+
+.loading-banner {
+  height: 100vh;
+  inset: 0;
+  object-fit: cover;
+  object-position: left center;
+  opacity: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
+
+/* =========================
+   表示制御（状態クラス）
+========================= */
+/* ロゴ表示 */
+body.show-logo .loading-logo {
+  opacity: 1;
+  transform: scale(1);
+  transition: 0.6s ease;
+}
+
+/* バナー表示 */
+body.show-banner .loading-banner {
+  opacity: 1;
+  transition: 0.8s ease;
+}
+
+/* ロゴ非表示 */
+body.hide-logo .loading-logo {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 0.4s ease;
+}
+
+/* ウェルカムボックス表示 */
+body.show-box .welcome-box {
+  opacity: 1;
+  transform: translateY(0);
+  transition: 1.5s ease;
+}
+
+/* =========================
+   ウェルカムボックス
+========================= */
+.welcome-box {
+  background: #fffafc;
+  border: 5px solid #e7c1cc;
+  border-radius: 18px;
+  left: 50%;
+  opacity: 0;
+  padding: 30px 20px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-1.2deg);
+  transform-origin: top center;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  width: 400px;
+  z-index: 3;
+}
+
+body.show-box .welcome-box {
+  opacity: 0.95;
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.welcome-box h2 {
+  color: #d26088;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.welcome-box p {
+  color: #555;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.welcome-box:hover {
+  animation: swingBoard 1.2s ease-in-out;
+}
+
+@keyframes swingBoard {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  20%  { transform: translate(-50%, -50%) rotate(1.2deg); }
+  40%  { transform: translate(-50%, -50%) rotate(-0.9deg); }
+  60%  { transform: translate(-50%, -50%) rotate(0.6deg); }
+  80%  { transform: translate(-50%, -50%) rotate(-0.3deg); }
+  100% { transform: translate(-50%, -50%) rotate(0deg); }
+}
+
+/* =========================
+   プライマリボタン
+========================= */
+.btn-primary {
+  align-items: center;
+  background: #d26088;
+  border-radius: 12px;
+  color: #fff;
+  display: flex;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  height: 44px;
+  justify-content: center;
+  margin-top: 14px;
+  padding: 0 16px;
+  position: relative;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: #e07098;
+  box-shadow: 0 6px 14px rgba(210, 96, 136, 0.35);
+  transform: translateY(-2px);
+}
+
+.btn-primary::after {
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 14px;
+  content: "";
+  inset: -2px;
+  opacity: 0;
+  position: absolute;
+  transition: opacity 0.25s ease;
+}
+
+.btn-primary:hover::after {
+  opacity: 1;
+}
+
+.btn-primary.disabled {
+  background: #dcdcdc;
+  box-shadow: none;
+  color: #888;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================
+   セカンダリボタン
+========================= */
+.btn-secondary {
+  appearance: none;
+  background: transparent;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  display: flex;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  height: 36px;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 10px;
+  outline: none;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+.btn-secondary:hover {
+  opacity: 0.6;
+}
+
+
+/* ===================================
+   PC レイアウト（1024px以上）
+=================================== */
+@media (min-width: 1024px) {
+
+     /* -----------------------------------
+       PC：body（中央配置＋スクロール固定）
+    ----------------------------------- */
+    body {
+       background: #ffc1bf;
+        display: block;
+        overflow: hidden;
+    }
+
+    .wrapper {
+        max-width: 1920px;
+        padding: 12px;
+    }
+
+    .pc-frame {
+        margin: auto;
+        max-width: 1920px;
+        padding: 10px;
+    }
+
+    /* -----------------------------------
+       PC：ヘッダーのロゴ
+    ----------------------------------- */
+    .hero-logo {
+        width: 53px;
+    }
+
+    .hero-menu {
+        animation: floatMenu 3s ease-in-out infinite;
+        cursor: pointer;
+        width: 35px;
+    }
+
+    .menu-close {
+        width: 35px;
+    }
+
+    .hero {
+        background: linear-gradient(#9ed9ff 0%, #ffc1bf 100%);
+        border: none;
+        border-radius: 22px;
+        min-height: calc(100vh - 24px);
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+
+    /* スマホ版建物の画像は非表示 */
+    .hero .bg {
+        display: none;
+    }
+
+    .pc-info-img {
+  position: absolute;
+}
+
+    /* -----------------------------------
+       PC：中央の大きな建物画像
+    ----------------------------------- */
+    .pc-building {
+        bottom: 30px;
+        display: block;
+        height: auto;
+        left: 50%;
+        pointer-events: none;
+        position: absolute;
+        transform: translateX(-50%);
+        width: 87%;
+        z-index: 1;
+    }
+
+    /* PCヘッダー（カーブ状パーツ） */
+    .pc-header {
+        display: block;
+        position: absolute;
+        inset: 0;
+        z-index: 500;
+        pointer-events: none;
+    }
+
+    .header-curve {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .header-curve img {
+        width: 100%;
+        display: block;
+    }
+
+    .curve-menu-wrap {
+        position: absolute;
+        top: 65px;
+        left: 50%;
+        transform: translateX(-50%);
+        max-width: 1200px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        pointer-events: auto;
+        z-index: 2;
+    }
+
+    .curve-menu {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+    }
+
+    .curve-menu a {
+        text-decoration: none;
+        font-family: "PaulaLily", sans-serif;
+        font-size: 17px;
+        font-weight: 700;
+        color: #4e4c8f;
+        white-space: nowrap;
+    }
+
+    .curve-menu a {
+        position: relative;
+        transition: 
+        transform 0.25s ease,
+        color 0.25s ease;
+    }
+
+    .curve-menu a:hover {
+        color: #d26088;              
+        transform: translateY(-3px); 
+    }
+    
+
+    .divider {
+        width: 1.5px;
+        height: 18px;
+        background: #4e4c8f;
+        border-radius: 10px;
+        opacity: 0.8;
+    }
+
+
+    /* メニューの縮小アニメ（画面幅対応） */
+    @media (max-width: 1500px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.81);
+        }
+    }
+
+    @media (max-width: 1300px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.76);
+        }
+    }
+
+    @media (max-width: 1100px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.69);
+        }
+    }
+
+    @media (max-width: 950px) {
+        .curve-menu-wrap {
+            transform: translateX(-50%) scale(0.61);
+        }
+    }
+
+    /* -----------------------------------
+       PC：インフォボックスとコースは非表示
+    ----------------------------------- */
+    .info-box,
+    .course-grid {
+        display: none;
+    }
+
+    /* -----------------------------------
+       PC：雲の位置調整
+    ----------------------------------- */
+    .cloud-1 {
+        left: 10%;
+        top: 35%;
+        width: 80px;
+    }
+
+    .cloud-2 {
+        left: 30%;
+        top: 25%;
+        width: 70px;
+    }
+
+    .cloud-3 {
+        right: 15%;
+        top: 40%;
+        width: 100px;
+    }
+
+    /* -----------------------------------
+       PC：車（truck）
+    ----------------------------------- */
+    .truck {
+        bottom: 9%;
+        left: 35%;
+        width: 7.5%;
+        z-index: 20;
+    }
+
+    /* -----------------------------------
+       PC：風船（balloons）
+    ----------------------------------- */
+    .balloon {
+        bottom: 9%;
+        left: 20%;
+        width: 50px;
+        z-index: 20;
+    }
+
+    .pc-balloon1,
+    .pc-balloon2 {
+        animation: pcFloat 3.5s ease-in-out infinite;
+        display: block;
+        position: absolute;
+        z-index: 20;
+    }
+
+    .pc-balloon1 {
+        right: 30%;
+        top: 35%;
+        width: 20px;
+    }
+
+    .pc-balloon2 {
+        left: 35%;
+        top: 47%;
+        width: 25px;
+    }
+
+    /* -----------------------------------
+       PC：?（クエスチョンマーク）の位置
+    ----------------------------------- */
+    .q-green {
+        left: 42.25%;
+        top: 76%;
+        width: 3.5%;
+    }
+
+    .q-pink {
+        left: 44.75%;
+        top: 24.5%;
+        width: 3.5%;
+    }
+
+    .q-orange {
+        right: 21.25%;
+        top: 70%;
+        width: 3.5%;
+    }
+
+    .q-brown {
+        right: 27.75%;
+        top: 51%;
+        width: 3.5%;
+    }
+
+    .q-post {
+        left: 18.75%;
+        top: 72%;
+        width: 3.5%;
+    }
+
+    .q-dark {
+        left: 45.5%;
+        top: 61%;
+        width: 3.5%;
+    }
+
+    /* -----------------------------------
+       PC：トップのロゴ＋メニュー位置
+    ----------------------------------- */
+    .hero-top {
+        left: 40px;
+        top: 40px;
+        width: calc(100% - 80px);
+    }
+   /* ===================================
+    PC：サイドメニュー（スクロール無効）
+    =================================== */
+    .side-menu {
+        overflow: hidden !important;
+    }
+
+    /* ===================================
+    PC：メニューリスト全体
+    =================================== */
+    .menu-list {
+        margin-top: 40px;
+        padding-right: 150px;
+        text-align: right;
+    }
+
+    /* ===================================
+    PC：各行（MAIN + SUB 横並び）
+    =================================== */
+    .menu-list .row {
+        align-items: center;
+        display: flex;
+        flex-direction: row; /* 横並び */
+        justify-content: flex-end;
+        margin: 26px 0 !important;
+    }
+
+    /* ===================================
+    PC：メインテキスト（右側）
+    =================================== */
+    .menu-list .main {
+        font-size: 30px;
+        margin-left: 20px;
+        white-space: nowrap;
+    }
+
+    /* ===================================
+    PC：サブテキスト（左側・横並び）
+    =================================== */
+    .menu-list .sub-wrap {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        margin-right: 100px;
+    }
+
+    .menu-list .sub {
+        font-size: 16px;
+        opacity: 0.9;
+        white-space: nowrap;
+    }
+
+    /* ============================
+    PCポップアップ画像（グローバル設定）
+    ============================ */
+    .pc-info-img {
+        height: 220px;
+        opacity: 0;
+        pointer-events: auto;
+        position: fixed;
+        transform: translateY(20px) scale(0.75);
+        width: 220px;
+        z-index: 999;
+    }
+
+    /* ポップアップの登場アニメーション */
+    @keyframes pcBounce {
+        0% {
+            opacity: 0;
+            transform: translateY(20px) scale(0.75);
+        }
+        40% {
+            opacity: 1;
+            transform: translateY(-10px) scale(1.10);
+        }
+        70% {
+            transform: translateY(5px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    /* ポップアップのループ揺れアニメーション */
+    .pc-info-img.show {
+        animation: pcBounce 0.45s ease forwards;
+    }
+
+    /* ポップアップループアニメーションの定義 */
+    .pc-info-img.bounce-loop {
+        animation: pcBounceLoop 1.3s ease-in-out infinite;
+    }
+
+    .side-menu {
+            overflow: hidden !important;  
+        }
+
+
+
+    @keyframes pcBounceLoop {
+        0%,
+        100% {
+            transform: translateY(0) scale(1);
+        }
+        50% {
+            transform: translateY(-8px) scale(1.02);
+        }
+    }
+
+    /* ============================
+    PCバルーン浮遊アニメ
+    ============================ */
+    @keyframes pcFloat {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+    }
+}
+
+
+
+
+

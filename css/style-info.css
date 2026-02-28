@@ -1,0 +1,1265 @@
+/* ===================================
+   リセット
+=================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #ffc1bf;
+  display: flex;
+  font-family: "MPLUSRounded", sans-serif;
+  justify-content: center;
+}
+
+/* ===================================
+   フォント設定
+=================================== */
+@font-face {
+  font-family: "MPLUSRounded";
+  font-weight: 400;
+  src: url("../fonts/MPLUSRounded1c-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MPLUSRounded";
+  font-weight: 600;
+  src: url("../fonts/MPLUSRounded1c-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MPLUSRounded";
+  font-weight: 700;
+  src: url("../fonts/MPLUSRounded1c-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PaulaLily";
+  font-weight: 700;
+  src: url("../fonts/PaulaLily-B.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "MPLUSRounded";
+  font-weight: 900;
+  src: url("../fonts/MPLUSRounded1c-ExtraBold.ttf") format("truetype");
+}
+
+/* ===================================
+   ラッパー
+=================================== */
+.wrapper {
+  max-width: 430px;
+  overflow: visible;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 80px;
+  position: relative;
+  width: 100%;
+}
+
+/* ===================================
+   ピンクフレーム（メイン）
+=================================== */
+.pink-frame {
+  background: #ffc1bf;
+  border: 1px solid #8b5a3c;
+  border-radius: 20px;
+  overflow: visible;
+  position: relative;
+}
+
+/* ===================================
+   ヒーロートップ（ロゴ・メニュー）
+=================================== */
+.hero-top {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  left: 24px;
+  position: absolute;
+  top: 24px;
+  width: calc(100% - 48px);
+  z-index: 100;
+}
+
+.hero-logo {
+  width: 45px;
+}
+
+.hero-menu {
+  cursor: pointer;
+  width: 28px;
+}
+
+/* ===================================
+   ヒーロー
+=================================== */
+.hero {
+  background: transparent;
+  position: relative;
+}
+
+.hero-inner {
+  background: transparent;
+}
+
+/* ===================================
+   ヒーロークリップ（固定フレーム）
+=================================== */
+.hero-clip {
+  aspect-ratio: 375 / 520;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 背景イラスト */
+.hero-illust {
+  inset: 0;
+  position: absolute;
+}
+
+.hero-illust img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+/* バナー画像（全体表示） */
+.banner-full img {
+  background: linear-gradient(
+    to right,
+    #E8E8E8 0%,
+    #DCF3FF 100%
+  );
+  object-fit: contain;
+}
+
+/* ===================================
+   ヒーローバナー（トリミングなし）
+=================================== */
+.hero-clip-banner {
+  aspect-ratio: auto;
+  height: auto;
+  overflow: hidden;
+}
+
+/* absolute指定を解除 */
+.hero-clip-banner .hero-illust {
+  inset: auto !important;
+  position: relative !important;
+}
+
+/* バナー画像の比率維持 */
+.hero-clip-banner img {
+  display: block;
+  height: auto !important;
+  object-fit: contain !important;
+  width: 100%;
+}
+
+/* ===================================
+   マップ表示
+=================================== */
+.map-image {
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  height: 240px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.map-image iframe {
+  border: 0;
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+  
+  /* ===================================
+   装飾
+=================================== */
+/* =========================
+   ヒーロー雲アニメーション
+========================= */
+.hero-cloud {
+  animation: heroCloudMove 18s linear infinite;
+  opacity: 0.9;
+  pointer-events: none;
+  position: absolute;
+  z-index: 6;
+}
+
+.hero-cloud.cloud-1 {
+  left: 45%;
+  top: 30%;
+  width: 8%;
+}
+
+.hero-cloud.cloud-2 {
+  animation-duration: 23s;
+  left: 10%;
+  top: 65%;
+  width: 20%;
+}
+
+.hero-cloud.cloud-3 {
+  right: 15%;
+  top: 40%;
+  width: 12%;
+}
+
+@keyframes heroCloudMove {
+  from { transform: translateX(-20px); }
+  to   { transform: translateX(40px); }
+}
+
+/* ===================================
+   PCヘッダー（SP非表示）
+=================================== */
+.pc-header {
+  display: none;
+}
+
+/* ===================================
+   ヒーロータイトル共通リセット
+=================================== */
+.info-title,
+.gallery-sub,
+.gallery-title {
+  margin: 0;
+}
+
+/* ===================================
+   ヒーローオーバーレイ
+=================================== */
+.hero-overlay {
+  left: 0;
+  pointer-events: auto;
+  right: 0;
+  z-index: 30;
+}
+
+/* ===================================
+   インフォメーションタイトル
+=================================== */
+.info-title {
+  color: #f15b6c;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  margin: 0 0 6px;
+}
+
+/* ===================================
+   ギャラリーセクション
+=================================== */
+.gallery-section {
+  background: linear-gradient(
+    to right,
+    #E8E8E8 0%,
+    #DCF3FF 100%
+  );
+  padding: 10px 0 20px;
+  text-align: center;
+}
+
+/* ===================================
+   ギャラリータイトル
+=================================== */
+.gallery-title {
+  color: #f15b6c;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  margin: 8px 0 4px;
+}
+
+.gallery-title span {
+  background-image: linear-gradient(#EACD92, #EACD92);
+  background-position: center 90%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+}
+
+/* ===================================
+   ギャラリーサブテキスト
+=================================== */
+.gallery-sub {
+  color: #555;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: 300px;
+}
+
+/* ===================================
+   ギャラリーモザイク
+=================================== */
+.gallery-mosaic {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 20px auto 50px;
+  max-width: 360px;
+  width: 100%;
+}
+
+/* ===================================
+   ギャラリーアイテム共通
+=================================== */
+.gallery-item {
+  background-position: center;
+  background-size: cover;
+  border-radius: 22px;
+  overflow: hidden;
+  position: relative;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-item::after {
+  background: rgba(0, 0, 0, 0.35);
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.1s ease;
+}
+
+.gallery-item:hover::after {
+  opacity: 0;
+}
+
+/* ===================================
+   ギャラリーサイズ指定
+=================================== */
+.big-top {
+  background: url("../img/info/1.jpg") center / cover no-repeat;
+  height: 140px;
+}
+
+.big-bottom {
+  background: url("../img/info/4.jpg") center / cover no-repeat;
+  height: 160px;
+}
+
+.gallery-row {
+  display: flex;
+  gap: 30px;
+}
+
+.gallery-row .small {
+  flex: 1;
+  height: 120px;
+}
+
+.gallery-row .small:nth-child(1) {
+  background: url("../img/info/2.jpg") center / cover no-repeat;
+}
+
+.gallery-row .small:nth-child(2) {
+  background: url("../img/info/3.jpg") center / cover no-repeat;
+}
+
+/* ===================================
+   ギャップセクション（区切り）
+=================================== */
+.gap1 {
+  background-image: url("../img/phone/story-greengap.svg");
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 108px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* ===================================
+   ストーリー背景
+=================================== */
+.story-wrap {
+  background: linear-gradient(
+    to right,
+    #E8E8E8 0%,
+    #DCF3FF 100%
+  );
+}
+
+/* ===================================
+   ストーリー共通
+=================================== */
+.story-section {
+  padding: 40px 0 20px;
+}
+
+.section-inner {
+  color: #333;
+  line-height: 2;
+  margin: 0 auto;
+  max-width: 390px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.section-title span {
+  background-image: linear-gradient(#EACD92, #EACD92);
+  background-position: center 90%;
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  color: #f15b6c;
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0 4px;
+}
+
+ /* =========================
+   アクセスタイトル調整
+========================= */
+.access-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.access-title span {
+  font-size: 22px;
+  letter-spacing: 0.1em;
+}
+
+.sub-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 28px 0 16px;
+  color: #444;
+}
+
+.section-text {
+  font-size: 14px;
+  line-height: 2;
+  color: #333;
+  text-align: center;
+}
+
+.section-text p {
+  margin: 24px 24px;
+  margin-bottom: 0;
+}
+
+/* =========================
+   ストーリー画像
+========================= */
+.story-image {
+  width: 80%;
+  margin: 28px auto;
+}
+
+.story-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   アクセスセクション
+========================= */
+.access-title span {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f15b6c;
+
+  /* ハイライト風下線 */
+  background-image: linear-gradient(#EACD92, #EACD92);
+  background-repeat: no-repeat;
+  background-size: 100% 0.5em;
+  background-position: center 90%;
+
+  padding: 0 4px;
+}
+
+.access-text .em {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* =========================
+   区切り用ギャップセクション
+========================= */
+.gap {
+  width: 100%;
+  height: 60px;
+  margin: 40px 0 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gap::before {
+  content: "";
+  width: 80%;
+  height: 1px;
+
+  background-image: repeating-linear-gradient(
+    to right,
+    #6b6b6b 0,
+    #6b6b6b 8px,
+    transparent 10px,
+    transparent 14px
+  );
+}
+
+/* =========================
+   フィードバック説明文
+========================= */
+.feedback-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  text-align: center;
+}
+
+/* =========================
+   フィードバックセクション
+========================= */
+.feedback-section {
+  padding: 80px 40px 40px;
+  text-align: center;
+}
+
+/* グリッド */
+.feedback-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* アイテム */
+.feedback-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* =========================
+   フィードバック画像
+========================= */
+.feedback-image {
+  width: 150px;
+  height: 200px;
+  border-radius: 120px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* お客様の声用画像 */
+.feedback-img-1 {
+  background-image: url("../img/info/9.jpg");
+}
+
+/* Googleフォーム用画像 */
+.feedback-img-2 {
+  background-image: url("../img/info/5.jpg");
+}
+
+/* ボタン */
+.feedback-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  border: 1.5px solid #8b5a3c;
+  background: #f36c8a;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.feedback-btn small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* =========================
+   お客様の声エリア
+========================= */
+.feedback-section {
+  margin-top: 50px;
+  border-radius: 30px;
+  padding: 40px 24px;
+  background: #fff8f8;
+}
+
+.feedback-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f36c8a;
+  letter-spacing: 0.1em;
+}
+
+.feedback-sub {
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0 32px;
+}
+
+/* リスト */
+.feedback-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* カード */
+.feedback-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  text-align: left;
+}
+
+/* 評価 */
+.feedback-star {
+  font-size: 14px;
+  color: #f2b400;
+  margin-bottom: 8px;
+}
+
+/* ユーザー */
+.feedback-user {
+  font-size: 12px;
+  color: #999;
+}
+
+/* ボタン */
+.feedback-btn-1 {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  background: #f36c8a;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* =========================
+   セクションエンド
+========================= */
+.story-section.end {
+  position: relative;
+  padding-top: 80px;
+  padding-bottom: 0;
+  overflow: hidden;
+}
+
+/* メインイラスト */
+.end-illust {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+}
+
+.end-illust img {
+  width: 100%;
+  display: block;
+}
+
+/* =========================
+   フローティング装飾
+========================= */
+.end-cloud,
+.end-balloon {
+  position: absolute;
+  z-index: 2;
+}
+
+/* 雲アニメーション */
+.end-cloud {
+  animation: cloudMove 20s linear infinite;
+}
+
+.end-cloud.cloud-1 { top: 70px; left: 20%; width: 85px; }
+.end-cloud.cloud-2 { top: 155px; left: 15%; width: 45px; animation-duration: 26s; }
+.end-cloud.cloud-3 { top: 100px; left: 60%; width: 55px; }
+.end-cloud.cloud-4 { top: 65px; left: 85%; width: 30px; animation-duration: 26s; }
+
+/* 風船アニメーション */
+.end-balloon {
+  animation: balloonFloat 4s ease-in-out infinite;
+}
+
+.balloon-1 { top: 80px; left: 10%; width: 23px; }
+.balloon-2 { top: 120px; left: 35%; width: 15px; animation-delay: 1s; }
+.balloon-3 { top: 90px; left: 90%; width: 18px; animation-delay: 2s; }
+
+@keyframes cloudMove {
+  from { transform: translateX(-20px); }
+  to   { transform: translateX(40px); }
+}
+
+@keyframes balloonFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* =========================
+   フッター
+========================= */
+.story-footer {
+  background: #f37c86;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.footer-menu {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.footer-menu a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  margin-bottom: 14px;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.footer-menu a:last-child {
+  margin-bottom: 0;
+}
+  
+/* ===================================
+   サイドメニュー（右からスライド表示）
+=================================== */
+.side-menu {
+  background: #d86b8a;
+  border-bottom-left-radius: 180px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 100%;
+  padding: 30px 25px;
+  transition: right 0.4s ease;
+  z-index: 9999;
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #ffffff80 transparent;
+}
+
+/* メニュー表示時 */
+.side-menu.active {
+  right: 0;
+}
+
+/* ===================================
+   メニュー閉じるボタン
+=================================== */
+.menu-close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  width: 28px;
+}
+
+/* ===================================
+   モバイル用メニューリスト
+=================================== */
+.side-menu-list {
+  text-align: right;
+}
+
+/* ===================================
+   メニュー行（メイン＋サブ）
+=================================== */
+.side-menu-list .row {
+  display: flex;
+  flex-direction: column-reverse;
+  margin: 40px 60px;
+  text-align: right;
+}
+
+/* メインテキスト */
+.side-menu-list .main {
+  text-decoration: none;
+  color: #fff;
+  font-family: "PaulaLily", sans-serif;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+/* サブメニューグループ */
+.side-menu-list .sub-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* サブテキスト */
+.side-menu-list .sub {
+  text-decoration: none;
+  color: #fff;
+  font-family: "MPLUSRounded", sans-serif;
+  font-size: 16px;
+  opacity: 0.85;
+}
+
+
+
+/* =====================================================
+   PC用レスポンシブ（1024px以上）— パターン2
+===================================================== */
+@media (min-width: 1024px) {
+
+  /* =========================
+     BODY / WRAPPER
+  ========================= */
+  body {
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .wrapper {
+    max-width: 1920px;
+    padding: 12px;
+  }
+
+  .pink-frame {
+    border: none;
+    background: transparent;
+    overflow: visible; /* ⚠️ クリップしない */
+    background: linear-gradient(
+      to right,
+      #E8E8E8 0%,
+      #DCF3FF 100%
+    );
+  }
+
+  /* =========================
+     HERO TOP（ロゴ・メニュー）
+  ========================= */
+  .hero-top {
+    top: 40px;
+    left: 40px;
+    width: calc(100% - 80px);
+  }
+
+  .hero-logo {
+    width: 53px;
+  }
+
+  .hero-menu {
+    width: 35px;
+  }
+
+  /* =========================
+     HERO + メニューラップ（PC構成）
+  ========================= */
+  .hero-menu-wrap {
+    background: linear-gradient(
+      to right,
+      #E8E8E8 0%,
+      #DCF3FF 100%
+    );
+    border-radius: 22px;
+    overflow: hidden;
+  }
+
+  /* =========================
+     HERO（PC）
+  ========================= */
+  .hero {
+    position: relative;
+    width: 100%;
+    background: transparent;
+  }
+
+  .hero-inner {
+    width: 100%;
+  }
+
+  .hero-clip {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1920 / 1080;
+    overflow: hidden;
+    border-radius: 22px 22px 0 0;
+    z-index: 0;
+  }
+
+  /* =========================
+     PC用背景バナー
+  ========================= */
+  .info-bg-pc {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: url("../img/info/banner1.png") center center no-repeat;
+    background-size: contain; /* 比率保持 */
+  }
+
+  .info-bg-pc::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 193, 191, 0.15);
+  }
+
+  /* =========================
+     HERO バナー調整
+  ========================= */
+  .hero-clip-banner {
+    background: linear-gradient(
+      to right,
+      #E8E8E8 0%,
+      #DCF3FF 100%
+    );
+  }
+
+  .hero-clip-banner .hero-illust {
+    display: none;
+  }
+
+  .hero-clip {
+    aspect-ratio: 1920 / 1070;
+  }
+
+  /* =========================
+     HERO オーバーレイ
+  ========================= */
+  .hero-overlay {
+    position: absolute;
+    top: 46vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    width: 100%;
+    max-width: 1920px;
+    pointer-events: none; /* PCでは操作不可 */
+  }
+
+  /* =========================
+     PC ヘッダー
+  ========================= */
+  .pc-header {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+  }
+
+  .header-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .header-curve img {
+    width: 100%;
+    display: block;
+  }
+
+  .curve-menu-wrap {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 2;
+  }
+
+  .curve-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .curve-menu a {
+    font-family: "PaulaLily", sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #4e4c8f;
+    white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .curve-menu a:hover {
+    color: #d26088;
+    transform: translateY(-3px);
+  }
+
+  .divider {
+    width: 1px;
+    height: 11px;
+    background: #4e4c8f;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
+
+  /* =========================
+     アクセスマップ（PC）
+  ========================= */
+  .map-image {
+    width: 600px;
+    height: 320px;
+    border-radius: 999px;
+  }
+ 
+/* =========================
+   メニューラップ（背景なし・マイナスマージンなし）
+========================= */
+.menu-wrap {
+  margin-top: 0;
+  padding-top: 0; /* ← 空指定はNG。0で明示 */
+  background: transparent;
+}
+
+.menu-page {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================
+   ギャラリーセクション（PC）
+========================= */
+.gallery-section {
+  padding: 80px 0 100px;
+}
+
+.gallery-title {
+  font-size: 42px;
+  margin-bottom: 12px;
+}
+
+.gallery-sub {
+  font-size: 16px;
+  max-width: 520px;
+}
+
+/* =========================
+   ギャラリーグリッド（PC）
+========================= */
+.gallery-mosaic {
+  max-width: 960px;
+  margin: 60px auto 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 32px;
+}
+
+/* モバイル用高さリセット */
+.big-top,
+.big-bottom,
+.gallery-row,
+.gallery-row .small {
+  height: auto;
+}
+
+/* 左側：大型画像 */
+.big-top {
+  grid-row: 1 / span 2;
+  min-height: 420px;
+  border-radius: 36px;
+}
+
+/* 右上：小画像2枚 */
+.gallery-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.gallery-row .small {
+  min-height: 200px;
+  border-radius: 28px;
+}
+
+/* 右下：横長画像 */
+.big-bottom {
+  min-height: 200px;
+  border-radius: 28px;
+}
+
+/* =========================
+   ギャラリー hover 演出（軽め）
+========================= */
+.gallery-item {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+.gallery-item::after {
+  transition: opacity 0.25s ease;
+}
+
+/* =========================
+   ストーリー共通（PC）
+========================= */
+.story-section {
+  padding: 60px 0 40px;
+}
+
+.section-inner {
+  max-width: 880px;
+  padding: 0 32px;
+}
+
+.section-title span,
+.access-title span {
+  font-size: 32px;
+}
+
+.section-text {
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+/* =========================
+   アクセスマップ（PC）
+========================= */
+.map-image {
+  width: 520px;
+  height: 280px;
+  margin: 0 auto;
+}
+
+/* =========================
+   フィードバック（PC）
+========================= */
+.feedback-section {
+  max-width: 1000px;
+  margin: 80px auto 0;
+  padding: 48px 40px;
+}
+
+.feedback-grid {
+  gap: 80px;
+  margin-top: 32px;
+}
+
+.feedback-image {
+  width: 250px;
+  height: 350px;
+}
+
+.feedback-title {
+  font-size: 20px;
+}
+
+.feedback-sub {
+  margin-bottom: 24px;
+}
+
+/* =========================
+   フッター画像（PC）
+========================= */
+.end-illust img {
+  content: url("../img/pc/footer.svg");
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================
+   フッターメニュー（PC）
+========================= */
+.footer-menu {
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  height: 120px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 80px;
+}
+
+.footer-menu a {
+  font-weight: 600;
+}
+
+/* =========================
+   PC用：サイドメニュー全体
+========================= */
+.side-menu-list {
+  margin-top: 40px;
+  padding-right: 150px;
+  text-align: right;
+}
+
+/* =========================
+   PC用：各行（MAIN＋SUB 横並び）
+========================= */
+.side-menu-list .row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 26px 0 !important;
+}
+
+/* =========================
+   PC用：メインテキスト
+========================= */
+.side-menu-list .main {
+  font-size: 30px;
+  margin-left: 20px;
+  white-space: nowrap;
+}
+
+/* =========================
+   PC用：サブテキスト
+========================= */
+.side-menu-list .sub-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 100px;
+  margin-right: 100px;
+}
+
+.side-menu-list .sub {
+  font-size: 16px;
+  opacity: 0.9;
+  white-space: nowrap;
+}
+}

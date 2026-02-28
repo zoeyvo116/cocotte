@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style-menu.css">
+  <title>Cocotte Menu</title>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- =========================
+       PC用ヘッダー（カーブメニュー）
+  ========================= -->
+  <div class="pc-header">
+  <div class="header-curve">
+    <img src="img/pc/header-curve.svg" alt="Header curve">
+
+    <div class="curve-menu-wrap">
+      <nav class="curve-menu">
+        <a href="original.html">なにたべる？</a>
+        <span class="divider"></span>
+        <a href="menu.html">メニュー</a>
+        <span class="divider"></span>
+        <a href="calendar.html">カレンダー</a>
+        <span class="divider"></span>
+        <a href="story.html">ストーリー</a>
+        <span class="divider"></span>
+        <a href="news.html">ニュース</a>
+        <span class="divider"></span>
+        <a href="info.html">インフォメーション</a>
+      </nav>
+    </div>
+  </div>
+</div>
+  <!-- =========================
+       ヒーロートップ（ロゴ・メニューボタン）
+  ========================= -->
+  <div class="hero-top">
+    <a href="index-phone.html" class="hero-logo-link">
+      <img src="img/phone/logo.svg" class="hero-logo" alt="Cocotte Home">
+    </a>
+    <img src="img/phone/menu.svg" class="hero-menu" alt="menu">
+  </div>
+
+  <!-- =========================
+       メインフレーム（ピンク枠）
+  ========================= -->
+  <div class="pink-frame">
+
+    <!-- =========================
+         HERO + MENU 共通背景エリア
+    ========================= -->
+    <div class="hero-menu-wrap">
+
+      <!-- =========================
+           HEROセクション
+      ========================= -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-clip">
+
+            <!-- PC用背景 -->
+            <div class="menu-bg-pc"></div>
+
+            <!-- スマホ用背景 -->
+            <div class="hero-illust">
+              <img src="img/phone/menu-bg.svg" alt="">
+            </div>
+
+            <!-- タイトル（CTA） -->
+            <div class="hero-title">
+              <a href="original.html" class="title">
+                本日の<br>おすすめ
+              </a>
+            </div>
+
+            <!-- 装飾用アイコン -->
+            <img src="img/phone/menu-grid1.svg" class="qmark q-grid1" alt="">
+            <img src="img/phone/menu-grid2.svg" class="qmark q-grid2" alt="">
+            <img src="img/phone/menu-grid3.svg" class="qmark q-grid3" alt="">
+            <img src="img/phone/menu-grid4.svg" class="qmark q-grid4" alt="">
+
+          </div>
+
+          <!-- =========================
+               サイドメニュー（スマホ）
+          ========================= -->
+          <div id="sideMenu" class="side-menu">
+            <button id="closeMenu" class="menu-close">
+              <img src="img/phone/menu-close.svg" alt="close">
+            </button>
+
+            <ul class="side-menu-list">
+              <li class="row">
+                <a href="original.html" class="main">なにたべる？</a>
+              </li>
+
+              <li class="row">
+                <a href="menu.html" class="main">メニュー</a>
+              </li>
+
+              <li class="row">
+                <a href="calendar.html" class="main">カレンダー</a>
+              </li>
+
+              <li class="row">
+                <div class="sub-wrap">
+                  <a href="story.html#concept" class="sub">コンセプト</a>
+                  <a href="story.html#school" class="sub">東京スイーツ＆カフェ学校</a>
+                  <a href="story.html#product" class="sub">商品詳細</a>
+                </div>
+                <a href="story.html" class="main">ストーリー</a>
+              </li>
+
+              
+
+              <li class="row">
+                <a href="news.html" class="main">ニュース</a>
+              </li>
+
+              <li class="row">
+                <div class="sub-wrap">
+                  <a href="info.html#gallery" class="sub">ギャラリー</a>
+                  <a href="info.html#access" class="sub">アクセス情報</a>
+                  <a href="info.html#feedback" class="sub">フィードバック</a>
+                </div>
+                <a href="info.html" class="main">インフォメーション</a>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =========================
+           メニュー表示エリア
+      ========================= -->
+      <div class="menu-wrap">
+
+        <!-- コース説明 -->
+        <div class="menu-page">
+          <div class="course-pc-layout">
+
+            <!-- コース切り替え -->
+            <section class="course-switch" id="courseSwitch">
+              <button class="course-arrow prev">
+                <img src="img/phone/menu-arrow-left.svg" alt="prev">
+              </button>
+
+              <div class="course-center">
+                <h2 class="course-title">
+                  <span id="courseTitle" data-index="0">パティシエ</span>
+                </h2>
+                <img src="img/phone/menu-course.svg" class="course-label-img" alt="">
+              </div>
+
+              <button class="course-arrow next">
+                <img src="img/phone/menu-arrow-right.svg" alt="next">
+              </button>
+            </section>
+
+            <!-- コース説明文 -->
+            <section class="course-desc" id="courseDesc">
+              <div class="desc-box">text text text text</div>
+              <div class="desc-box">text text text text</div>
+              <div class="desc-box">text text text text</div>
+              <div class="desc-box">text text text text</div>
+            </section>
+
+          </div>
+        </div>
+
+        <!-- =========================
+             メニュー一覧
+        ========================= -->
+        <div class="menu-page menu-layout">
+
+          <div class="menu-title">
+            <span>メニュー</span>
+          </div>
+
+          <div class="menu-left">
+            <div class="menu-gallery">
+
+              <!-- メイン画像 -->
+              <section class="menu-visual">
+                <div class="menu-circle-wrap">
+
+                  <button class="menu-nav prev" aria-label="prev">
+                    <img src="img/phone/menu-arrow-left.svg" alt="">
+                  </button>
+
+                  <div class="menu-circle" id="menuImage"></div>
+
+                  <button class="menu-nav next" aria-label="next">
+                    <img src="img/phone/menu-arrow-right.svg" alt="">
+                  </button>
+
+                </div>
+              </section>
+
+              <!-- メニュー名・価格 -->
+              <section class="menu-name">
+                <h3 id="menuName"></h3>
+                <div class="menu-price">
+                  <img id="menuPrice" alt="">
+                </div>
+              </section>
+
+              <!-- タグ -->
+              <section class="menu-tag" id="menuTag"></section>
+
+            </div>
+          </div>
+
+          <!-- 右側リスト -->
+          <div class="menu-right">
+            <section class="menu-list" id="menuList"></section>
+          </div>
+
+        </div>
+
+        <section class="course-panel">
+
+          <div class="course-grid">
+            <a href="menu.html#patisserie" class="course-card" data-course="patisserie">
+              <img src="img/phone/footer-chara-green.svg" alt="パティシエコース">
+            </a>
+
+            <a href="menu.html#barista" class="course-card" data-course="barista">
+              <img src="img/phone/footer-chara-brown.svg" alt="カフェ＆バリスタコース">
+            </a>
+
+            <a href="menu.html#bread" class="course-card" data-course="bread">
+              <img src="img/phone/footer-chara-orange.svg" alt="ブーランジェコース">
+            </a>
+
+            <a href="menu.html#creator" class="course-card" data-course="creator">
+              <img src="img/phone/footer-chara-pink.svg" alt="スイーツカフェクリエイターコース">
+            </a>
+          </div>
+
+
+          <div class="course-links">
+
+            <a href="https://www.instagram.com/cocotte__2025/" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-1.svg" alt="">
+              <span>Instagram</span>
+            </a>
+
+            <a href="https://www.sanko.ac.jp/tokyo-sweets" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-2.svg" alt="">
+              <span>東京スイーツ＆カフェ専門学校</span>
+            </a>
+
+            <a href="index-phone.html" 
+              class="course-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              <img src="img/phone/footer-icon-3.svg" alt="">
+              <span>通販サイト</span>
+            </a>
+
+          </div>
+
+
+        </section>   
+      </div>
+
+      <!-- コースパネル -->
+         
+
+      <!-- =========================
+           フッター装飾エリア
+      ========================= -->
+      <section class="story-section end">
+        <div class="end-illust">
+          <img src="img/phone/footer.svg" alt="">
+        </div>
+
+        <img src="img/phone/cloud1.svg" class="end-cloud cloud-1" alt="">
+        <img src="img/phone/cloud2.svg" class="end-cloud cloud-2" alt="">
+        <img src="img/phone/cloud1.svg" class="end-cloud cloud-3" alt="">
+        <img src="img/phone/cloud2.svg" class="end-cloud cloud-4" alt="">
+
+        <img src="img/phone/balloon.svg" class="end-balloon balloon-1" alt="">
+        <img src="img/phone/balloon.svg" class="end-balloon balloon-2" alt="">
+        <img src="img/phone/balloon.svg" class="end-balloon balloon-3" alt="">
+      </section>
+
+    </div>
+
+    <!-- =========================
+         フッターリンク
+    ========================= -->
+     <!-- フッター -->
+     <footer class="story-footer">
+      <div class="footer-menu">
+        <a href="original.html">何食べる？</a>
+        <a href="menu.html">メニュー</a>
+        <a href="calendar.html">カレンダ</a>
+        <a href="story.html">ストーリー</a>
+        <a href="news.html">ニュース</a>
+        <a href="info.html">インフォメーション</a>
+
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+<script src="js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+/* RESET */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: #f9c9d6;
+    display: flex;
+    justify-content: center;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+/* ============================
+   FONT TITLE — PaulaLily
+============================= */
+@font-face {
+    font-family: 'PaulaLily';
+    src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ============================
+   FONT TEXT — M PLUS Rounded 1c
+============================= */
+
+/* Thin — 100 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Thin.ttf') format('truetype');
+    font-weight: 100;
+}
+
+/* Light — 300 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+/* Regular — 400 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+/* Medium — 500 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
+    font-weight: 500;
+}
+
+/* Bold — 700 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
+    font-weight: 700;
+}
+
+/* Black — 900 */
+@font-face {
+    font-family: 'MPLUSRounded';
+    src: url('../fonts/MPLUSRounded1c-Black.ttf') format('truetype');
+    font-weight: 900;
+}
+
+
+.wrapper {
+    width: 100%;
+    max-width: 430px;
+    padding: 12px;
+}
+
+/* --------------------------------------------- */
+/* HEADER (logo + menu ballon) */
+/* --------------------------------------------- */
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #8b5a3c;   /* viền nâu */
+    background: #ffffff;         /* optional: nền trắng để border nổi */
+}
+
+.hero-top {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    width: calc(100% - 52px);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 50;
+}
+
+.hero-logo { width: 45px; }
+
+.hero-menu {
+    width: 28px;
+    cursor: pointer;
+    animation: floatMenu 3s ease-in-out infinite;
+}
+
+
+
+/* --------------------------------------------- */
+/* HERO container */
+/* --------------------------------------------- */
+
+.hero {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.bg {
+    width: 100%;
+    display: block;
+}
+
+/* --------------------------------------------- */
+/* CLOUD ANIMATION */
+/* --------------------------------------------- */
+
+.cloud {
+    position: absolute;
+    opacity: 0.9;
+    animation: cloudMove 18s linear infinite;
+}
+
+@keyframes cloudMove {
+    from { transform: translateX(-20px); }
+    to   { transform: translateX(40px); }
+}
+
+.cloud-1 { width: 8%; top: 6%; left: 45%; }
+.cloud-2 { width: 20%; top: 32%; left: 10%; animation-duration: 23s; }
+.cloud-3 { width: 12%; top: 23%; right: 8%; }
+
+/* --------------------------------------------- */
+/* BALLOON */
+/* --------------------------------------------- */
+
+.balloon {
+    width: 5%;
+    position: absolute;
+    top: 25%;
+    left: 10%;
+    animation: float 3.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-8px); }
+}
+
+/* --------------------------------------------- */
+/* TRUCK — FIX CONFLICT TRANSFORM */
+/* --------------------------------------------- */
+
+.truck {
+    position: absolute;
+    width: 18%;
+    bottom: 22%;
+
+    /* bắt đầu từ giữa */
+    left: 50%;
+    transform: translateX(-50%);
+
+    animation: truckToMailbox 12s ease-out forwards;
+}
+
+@keyframes truckToMailbox {
+    0% {
+        transform: translateX(-50%);
+    }
+    75% {
+        transform: translateX(-140%);
+    }
+    100% {
+        transform: translateX(-140%);
+    }
+}
+
+/* --------------------------------------------- */
+/* QUESTION MARK */
+/* --------------------------------------------- */
+
+.qmark {
+    width: 8%;
+    position: absolute;
+    cursor: pointer;
+    z-index: 60;          /* CLICK ALWAYS WORKS */
+    animation: qBob 1.4s ease-in-out infinite;
+}
+
+@keyframes qBob {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-6px); }
+}
+
+/* Positioning — minor adjustments allowed */
+.q-green  { top: 71%; left: 39.5%; }
+.q-pink   { top: 11%; left: 37%; }
+.q-orange { top: 64%; right: 14.5%; }
+.q-brown  { bottom: 59%; right: 11.5%; }
+.q-post   { bottom: 29%; left: 6.5%; }
+
+/* --------------------------------------------- */
+/* INFO BOX — FIXED VERSION */
+/* --------------------------------------------- */
+
+.info-box {
+    position: relative;
+    top: -70px;        /* kéo info-box lên chồng vào khung hồng */
+    z-index: 100;
+    margin-bottom: -30px;  /* để không tạo khoảng trắng thừa */
+    text-align: center;
+    overflow: hidden;
+}
+.info-img {
+    width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: 0.25s ease;
+}
+
+/* --------------------------------------------- */
+/* COURSE GRID */
+/* --------------------------------------------- */
+
+.course-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 15px;
+}
+
+.course-item {
+    width: 100%;
+    cursor: pointer;
+}
+
+.course-svg {
+    width: 92%;
+    display: block;
+    transition: 0.2s ease;
+}
+
+.course-item:active .course-svg {
+    transform: scale(0.95);
+    opacity: 0.8;
+}
+
+
+
+
+
