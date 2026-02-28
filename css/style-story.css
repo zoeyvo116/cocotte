@@ -921,7 +921,7 @@ body {
   /* =========================
      PC用ヘッダー
   ========================= */
-  .pc-header {
+    .pc-header {
     display: block;
     position: absolute;
     inset: 0;
@@ -960,9 +960,9 @@ body {
     gap: 32px;
   }
 
-  .curve-menu a {
+ .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size: 17px;
+    font-size: 19.5px;
     font-weight: 700;
     color: #4e4c8f;
     white-space: nowrap;

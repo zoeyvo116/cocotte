@@ -214,3 +214,10 @@ const qmarkGreen = document.querySelector(".qmark.q-green");
 qmarkGreen?.addEventListener("click", () => {
   window.location.href = "menu.html";
 });
+
+document.addEventListener("click", e => {
+  if (e.target.closest(".pc-info-img")) return;
+  if (e.target.closest(".qmark")) return;
+
+  closePopup();
+});

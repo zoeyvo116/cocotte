@@ -673,74 +673,71 @@ body {
     }
 
     /* PCヘッダー（カーブ状パーツ） */
-    .pc-header {
-        display: block;
-        position: absolute;
-        inset: 0;
-        z-index: 500;
-        pointer-events: none;
-    }
+      .pc-header {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 500;
+    pointer-events: none;
+  }
 
-    .header-curve {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-    }
+  .header-curve {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 
-    .header-curve img {
-        width: 100%;
-        display: block;
-    }
+  .header-curve img {
+    width: 100%;
+    display: block;
+  }
 
-    .curve-menu-wrap {
-        position: absolute;
-        top: 65px;
-        left: 50%;
-        transform: translateX(-50%);
-        max-width: 1200px;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        pointer-events: auto;
-        z-index: 2;
-    }
+  .curve-menu-wrap {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
+    z-index: 2;
+  }
 
-    .curve-menu {
-        display: flex;
-        align-items: center;
-        gap: 32px;
-    }
+  .curve-menu {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
 
-    .curve-menu a {
-        text-decoration: none;
-        font-family: "PaulaLily", sans-serif;
-        font-size: 17px;
-        font-weight: 700;
-        color: #4e4c8f;
-        white-space: nowrap;
-    }
+ .curve-menu a {
+    font-family: "PaulaLily", sans-serif;
+    font-size: 19.5px;
+    font-weight: 700;
+    color: #4e4c8f;
+    white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
+  }
 
-    .curve-menu a {
-        position: relative;
-        transition: 
-        transform 0.25s ease,
-        color 0.25s ease;
-    }
+  .curve-menu a:hover {
+    color: #d26088;
+    transform: translateY(-3px);
+  }
 
-    .curve-menu a:hover {
-        color: #d26088;              
-        transform: translateY(-3px); 
-    }
-    
+  .divider {
+    width: 1px;
+    height: 11px;
+    background: #4e4c8f;
+    border-radius: 10px;
+    opacity: 0.8;
+  }
 
-    .divider {
-        width: 1.5px;
-        height: 18px;
-        background: #4e4c8f;
-        border-radius: 10px;
-        opacity: 0.8;
-    }
 
 
     /* メニューの縮小アニメ（画面幅対応） */

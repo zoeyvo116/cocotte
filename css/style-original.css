@@ -1070,56 +1070,56 @@ body.no-scroll {
   /* =========================
      PC 用ヘッダー
   ========================= */
-  .pc-header {
+    .pc-header {
     display: block;
-    inset: 0;
-    pointer-events: none;
     position: absolute;
+    inset: 0;
     z-index: 500;
+    pointer-events: none;
   }
 
   .header-curve {
-    left: 0;
     position: absolute;
-    right: 0;
     top: 0;
+    left: 0;
+    right: 0;
   }
 
   .header-curve img {
-    display: block;
     width: 100%;
+    display: block;
   }
 
   .curve-menu-wrap {
-    display: flex;
-    justify-content: center;
-    left: 50%;
-    max-width: 1200px;
-    pointer-events: auto;
     position: absolute;
     top: 65px;
+    left: 50%;
     transform: translateX(-50%);
+    max-width: 1200px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: auto;
     z-index: 2;
   }
 
   .curve-menu {
-    align-items: center;
     display: flex;
+    align-items: center;
     gap: 32px;
   }
 
-  .curve-menu a {
-    color: #4e4c8f;
+ .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size: 17px;
+    font-size: 19.5px;
     font-weight: 700;
-    position: relative;
-    text-decoration: none;
-    transition:
-      color 0.25s ease,
-      transform 0.25s ease;
+    color: #4e4c8f;
     white-space: nowrap;
+    text-decoration: none;
+    position: relative;
+    transition:
+      transform 0.25s ease,
+      color 0.25s ease;
   }
 
   .curve-menu a:hover {
@@ -1128,12 +1128,13 @@ body.no-scroll {
   }
 
   .divider {
+    width: 1px;
+    height: 11px;
     background: #4e4c8f;
     border-radius: 10px;
-    height: 11px;
     opacity: 0.8;
-    width: 1px;
   }
+
 
   /* =========================
      画面幅に応じたメニュー縮小
