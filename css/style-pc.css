@@ -13,7 +13,7 @@ body {
 ============================= */
 @font-face {
     font-family: 'PaulaLily';
-    src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+    src: url('../fonts/PaulaLily-B.otf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }

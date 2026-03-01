@@ -20,7 +20,7 @@ body {
 @font-face {
   font-family: 'PaulaLily';
   font-weight: 700;
-  src: url('../fonts/PaulaLily-B.ttf') format('truetype');
+  src: url('../fonts/PaulaLily-B.otf') format('truetype');
 }
 
 @font-face {
