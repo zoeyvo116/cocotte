@@ -229,7 +229,7 @@ body {
     display: grid;
     gap: 8px;
     grid-template-columns: repeat(7, 1fr);
-    margin-bottom: 22px;
+    margin-bottom: 15px;
     margin-top: 10px;
 }
 
@@ -274,7 +274,7 @@ body {
    デフォルト表示（販売なし / 休日）
 =================================== */
 .calendar-day {
-    border: 2px solid #ffffff;
+    border: 1.5px solid #ffffff;
     border-radius: 10px;
     box-shadow:
         0 5px 6px rgba(0, 0, 0, 0.2),
@@ -316,9 +316,9 @@ body {
 .calendar-legend {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px 22px;
+    gap: 12px 22px;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 10px;
 }
 
 .legend-item {
@@ -611,6 +611,7 @@ body {
     .wrapper {
         max-width: 1920px;
         padding: 12px;
+        
     }
 
     .pc-frame {
@@ -630,6 +631,8 @@ body {
         animation: floatMenu 3s ease-in-out infinite;
         cursor: pointer;
         width: 35px;
+       
+
     }
 
     .menu-close {
@@ -638,10 +641,9 @@ body {
 
     .hero {
         background: linear-gradient(#9ed9ff 0%, #ffc1bf 100%);
-        border: none;
-        border-radius: 22px;
-        min-height: calc(100vh - 24px);
-        overflow: hidden;
+        border: 1px solid #8b5a3c;
+        border-radius: 20px;
+        margin-bottom: 20px;
         position: relative;
         width: 100%;
     }
@@ -723,7 +725,7 @@ body {
 
   .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size:1.1rem;
+    font-size:1rem;
 
     font-weight: 700;
     color: #4e4c8f;

@@ -145,6 +145,13 @@ body {
   position: absolute;
 }
 
+.cloud,
+.balloon,
+.pc-balloon1,
+.pc-balloon2{
+  z-index: 1;
+}
+
 .cloud-1 {
   left: 45%;
   top: 6%;
@@ -650,7 +657,7 @@ body {
 
   .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size:1.1rem;
+    font-size:1rem;
 
     font-weight: 700;
     color: #4e4c8f;
@@ -664,7 +671,7 @@ body {
     
   @media (min-width:1400px){
     .curve-menu a{
-    font-size:1.2rem;
+    font-size:1rem;
     }
     }
     
