@@ -1030,15 +1030,15 @@ body {
       color 0.25s ease;
   }
     
-    @media (min-width:1400px){
+  @media (min-width:1400px){
     .curve-menu a{
-    font-size:1.3rem;
+    font-size:1.2rem;
     }
     }
     
     @media (min-width:1700px){
     .curve-menu a{
-    font-size:1.5rem;
+    font-size:1.2rem;
     }
     }
 
