@@ -219,7 +219,7 @@ body {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 220px;   /* 表示位置調整 */
+  top: 90px;
   z-index: 20;
 }
 
