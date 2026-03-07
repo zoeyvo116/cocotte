@@ -495,7 +495,8 @@ body.show-box .welcome-box {
   transition:
     opacity 0.2s ease,
     transform 0.2s ease;
-  width: 400px;
+  width: calc(100% - 40px);
+  max-width: 400px;
   z-index: 3;
 }
 

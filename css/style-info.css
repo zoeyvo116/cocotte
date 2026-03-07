@@ -724,6 +724,8 @@ body {
   background: #f37c86;
   padding: 24px 0;
   text-align: center;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
 }
 
 .footer-menu {
