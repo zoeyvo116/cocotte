@@ -82,6 +82,15 @@ body {
   cursor: pointer; 
 }
 
+.hero-logo{
+  transition: all .3s ease;
+  }
+  
+  .hero-logo:hover{
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgb(255, 255, 255));
+  }
+
 /* ===================================
    HEROエリア
 =================================== */
@@ -883,9 +892,10 @@ body {
     gap: 32px;
   }
 
- .curve-menu a {
+  .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size: 17.5px;
+    font-size:1.1rem;
+
     font-weight: 700;
     color: #4e4c8f;
     white-space: nowrap;
@@ -895,6 +905,18 @@ body {
       transform 0.25s ease,
       color 0.25s ease;
   }
+    
+    @media (min-width:1400px){
+    .curve-menu a{
+    font-size:1.3rem;
+    }
+    }
+    
+    @media (min-width:1700px){
+    .curve-menu a{
+    font-size:1.5rem;
+    }
+    }
 
   .curve-menu a:hover {
     color: #d26088;

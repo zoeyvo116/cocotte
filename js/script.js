@@ -274,3 +274,4 @@ enterBtn?.addEventListener("click", e => {
     sessionStorage.setItem("cocotteLoaded", "true");
   }, 400);
 });
+

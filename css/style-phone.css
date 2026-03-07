@@ -106,6 +106,14 @@ body {
     width: 100%;
 }
 
+.hero-logo{
+    transition: all .3s ease;
+    }
+    
+    .hero-logo:hover{
+    transform: scale(1.08);
+    filter: drop-shadow(0 0 8px rgb(255, 255, 255));
+    }
 /* ===================================
    ヒーロー内ヘッダー（ロゴ・メニュー）
 =================================== */
@@ -206,6 +214,8 @@ body {
     position: absolute;
     width: 8%;
     z-index: 60;
+    
+
 }
 
 @keyframes qBob {
@@ -687,7 +697,7 @@ body.show-box .welcome-box {
         pointer-events: none;
         position: absolute;
         transform: translateX(-50%);
-        width: 87%;
+        width: 100%;
         z-index: 1;
     }
 
@@ -733,7 +743,8 @@ body.show-box .welcome-box {
 
  .curve-menu a {
     font-family: "PaulaLily", sans-serif;
-    font-size: 17.5px;
+    font-size:1.1rem;
+
     font-weight: 700;
     color: #4e4c8f;
     white-space: nowrap;
@@ -743,6 +754,18 @@ body.show-box .welcome-box {
       transform 0.25s ease,
       color 0.25s ease;
   }
+    
+    @media (min-width:1400px){
+    .curve-menu a{
+    font-size:1.3rem;
+    }
+    }
+    
+    @media (min-width:1700px){
+    .curve-menu a{
+    font-size:1.5rem;
+    }
+    }
 
   .curve-menu a:hover {
     color: #d26088;
@@ -817,7 +840,7 @@ body.show-box .welcome-box {
        PC：車（truck）
     ----------------------------------- */
     .truck {
-        bottom: 9%;
+        bottom: 10%;
         left: 35%;
         width: 7.5%;
         z-index: 20;
@@ -856,39 +879,52 @@ body.show-box .welcome-box {
     /* -----------------------------------
        PC：?（クエスチョンマーク）の位置
     ----------------------------------- */
+    .map{
+        position:relative;
+        width:90%;
+        margin:auto;
+        aspect-ratio:1920 / 850;
+        top: 120px;
+        }
+
+    .qmark{
+        position:absolute;
+        transform:translate(-50%,-50%);
+        }
+   
     .q-green {
-        left: 42.25%;
-        top: 76%;
+        left: 41.5%;
+        top: 74%;
         width: 3.5%;
     }
 
     .q-pink {
-        left: 44.75%;
-        top: 24.5%;
+        left: 44.125%;
+        top: 12%;
         width: 3.5%;
     }
 
     .q-orange {
-        right: 21.25%;
-        top: 70%;
+        right: 17.25%;
+        top: 67.5%;
         width: 3.5%;
     }
 
     .q-brown {
-        right: 27.75%;
-        top: 51%;
+        right: 24.75%;
+        top: 43%;
         width: 3.5%;
     }
 
     .q-post {
-        left: 18.75%;
-        top: 72%;
+        left: 14.25%;
+        top: 68%;
         width: 3.5%;
     }
 
     .q-dark {
-        left: 45.5%;
-        top: 61%;
+        left: 45%;
+        top: 55%;
         width: 3.5%;
     }
 
@@ -961,7 +997,9 @@ body.show-box .welcome-box {
         opacity: 0;
         pointer-events: auto;
         position: fixed;
-        transform: translateY(20px) scale(0.75);
+    
+        transform: translate(-50%, -50%) scale(0.75);
+    
         width: 220px;
         z-index: 999;
     }
@@ -1024,6 +1062,7 @@ body.show-box .welcome-box {
         }
     }
 }
+
 
 
 
