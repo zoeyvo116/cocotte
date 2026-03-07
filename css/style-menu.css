@@ -847,6 +847,8 @@ body {
   background: #f37c86;
   padding: 24px 0;
   text-align: center;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
 }
 
 /* フッターメニュー */
@@ -886,13 +888,14 @@ body {
   .wrapper {
     max-width: 1920px;
     padding: 12px;
-    
+    border-radius: 22px;
   }
 
   .pink-frame {
     background: transparent;
     border: none;
     overflow: visible; 
+    border-radius: 22px;
   }
 
    /* =========================
@@ -921,8 +924,8 @@ body {
       #E8E8E8 0%,
       #DCF3FF 100%
     );
-    border-radius: 22px;
     overflow: hidden;
+    border-radius: 22px 22px 0 0 ;
   }
 
   /* =========================
@@ -1130,11 +1133,12 @@ body {
   margin: 0 auto;
   padding: 0 24px;
 }
+
 .menu-title {
   grid-column: 1 / -1;
   text-align: left;
-  margin: 0 0 10px 0;
-  padding-left:136px;
+  margin: 0 0 10px;
+  padding-left: 136px;
 }
 
 .menu-title span {
@@ -1150,12 +1154,16 @@ body {
 .menu-right {
   flex: 1;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-right: 180px;
 }
 
 .menu-list {
   column-gap: 100px;
-  grid-template-columns: repeat(3, minmax(140px, 140px));
-  justify-content: start;   /* 左寄せ固定 */
+  grid-template-columns: repeat(3, 140px);
+  justify-content: start;
   row-gap: 12px;
 }
 
@@ -1164,108 +1172,49 @@ body {
 }
 
 .menu-pager {
-  align-items: center;
-  margin: 0;
   position: absolute;
   right: 10px;
   top: 0;
   transform: translateY(-50%);
 }
 
-.menu-right {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  margin-right: 180px;
-}
-
-/* ===================================
-   PC：サイドメニュー全体
-=================================== */
-.side-menu-list {
-  margin-top: 40px;
-  padding-right: 150px;
-  text-align: right;
-}
-
-/* ===================================
-   PC：各行（MAIN＋SUB 横並び）
-=================================== */
-.side-menu-list .row {
-  align-items: center;
-  display: flex;
-  flex-direction: row; /* 横並び */
-  justify-content: flex-end;
-  margin: 26px 0 !important;
-}
-
-/* ===================================
-   PC：メインテキスト（右側）
-=================================== */
-.side-menu-list .main {
-  font-size: 30px;
-  margin-left: 20px;
-  white-space: nowrap;
-}
-
-/* ===================================
-   PC：サブテキスト（左側・横並び）
-=================================== */
-.side-menu-list .sub-wrap {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  gap: 100px;
-  margin-right: 100px;
-}
-
-.side-menu-list .sub {
-  font-size: 16px;
-  opacity: 0.9;
-  white-space: nowrap;
-}
-
-    /* =========================
-   コース全体レイアウト（PC）
+/* =========================
+   COURSE LAYOUT
 ========================= */
+
 .course-pc-layout {
-  align-items: start;
   display: grid;
-  gap: 80px;
   grid-template-columns: 260px 2fr;
+  gap: 80px;
+  width: min(1400px, 100vw);
   margin: 32px auto 80px;
   padding: 0 24px;
-  width: min(1400px, 100vw);
+  align-items: start;
 }
 
-/* =========================
-   コース切り替え（PC）
-========================= */
+/* コース切り替え */
 .course-switch {
-  align-items: center;
-  column-gap: 10px;
   display: grid;
   grid-template-columns: auto 1fr auto;
+  column-gap: 10px;
+  align-items: center;
   transform: translateY(-28px);
 }
 
-/* 矢印表示（PC） */
 .course-arrow {
   display: block;
 }
 
-/* =========================
-   コース中央ブロック
-========================= */
-.course-center{
-  align-items:flex-start;
-  justify-self:start;
-  min-width:420px;
-  padding-left:100px;
-  text-align:left;
+/* コース中央 */
+.course-center {
+  align-items: flex-start;
+  justify-self: start;
+  min-width: 420px;
+  padding-left: 100px;
+  text-align: left;
 }
 
-/* コースタイトル */
+/* タイトル */
 .course-title {
   text-align: left;
 }
@@ -1275,24 +1224,22 @@ body {
   white-space: normal;
 }
 
-/* コースラベル画像 */
 .course-label-img {
   width: 100px;
 }
 
 /* =========================
-   コース説明文（PCグリッド）
+   COURSE DESCRIPTION
 ========================= */
+
 .course-desc {
   display: grid;
-  gap: 28px 32px;
   grid-template-columns: repeat(2, minmax(360px, 1fr));
-  margin-left: auto;
+  gap: 28px 32px;
   max-width: 820px;
-  padding: 0;
+  margin-left: auto;
 }
 
-/* 説明ボックス */
 .desc-box {
   background: #eef6f3;
   border-radius: 999px;
@@ -1304,124 +1251,120 @@ body {
 }
 
 /* =========================
-   コースパネル
-========================= */
-.course-panel {
-  margin: 0 auto;
-  max-width: 700px;
-  padding: 80px 0 60px;
-}
-
-/* =========================
-   コース一覧（カード）
-========================= */
-.course-grid {
-  align-items: flex-end;
-  display: flex;
-  gap: 24px;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  margin-top: 120px;
-  padding: 0;
-}
-
-.course-card {
-  background: transparent;
-  position: relative;
-  width: 18%;
-}
-
-.course-card img {
-  display: block;
-  width: 100%;
-}
-
-/* =========================
    コースリンク（PC）
-========================= */
-.course-links {
-  align-items: center;
-  background: #fff;
-  border: 2px solid black;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: row;
-  gap: 28px;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 20px 32px;
-}
-
-.course-link {
-  background: transparent;
-  border: none;
-  height: 40px;
-  padding: 0 10px;
-}
-
-.course-link img {
-  height: 20px;
-  width: 20px;
-}
-
-/* リンク区切り線 */
-.course-link:not(:last-child)::after {
-  background: #ccc;
-  content: "";
-  display: block;
-  height: 18px;
-  margin-left: 28px;
-  width: 1px;
-}
-
-/* =========================
-   フォーカス演出
-========================= */
-.course-switch.focus {
-  animation: focusFlash 0.7s ease;
-}
-
-@keyframes focusFlash {
-  0% {
-    box-shadow: 0 0 0 rgba(0,0,0,0);
-    transform: scale(1);
+  ========================= */
+  .course-panel {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 0 60px;
   }
-  40% {
-    box-shadow: 0 0 25px rgba(255,120,150,.5);
-    transform: scale(1.04);
+
+  .course-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 120px;
   }
-  100% {
-    box-shadow: none;
-    transform: scale(1);
+
+  .course-card {
+    width: 22%;
+    background: transparent;
+    position: relative;
+  }
+
+  .course-card img {
+    width: 100%;
+    display: block;
+  }
+
+  /* リンクエリア */
+  .course-links {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 1200px;
+    margin: 0 auto;
+
+    padding: 20px 32px;
+    background: #fff;
+    border-radius: 18px;
+    border: 2px solid black;
+
+    gap: 28px;
+  }
+
+  .course-link {
+    height: 40px;
+    padding: 0 10px;
+    background: transparent;
+    border: none; /* 外枠は親ボックスで管理 */
+  }
+
+  .course-link img {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* リンク間の仕切り線 */
+  .course-link:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 18px;
+    background: #ccc;
+    margin-left: 28px;
+  }
+
+  /* 全体幅を少しコンパクトに */
+  .course-panel {
+    max-width: 700px;
+  }
+
+  .course-card {
+    width: 18%;
+  }
+
+  .course-links {
+    max-width: 800px;
+  }
+
+  /* フォーカス時の強調アニメーション */
+  .course-switch.focus {
+    animation: focusFlash 0.7s ease;
+  }
+
+  @keyframes focusFlash {
+    0%   { transform: scale(1); box-shadow: 0 0 0 rgba(0,0,0,0); }
+    40%  { transform: scale(1.04); box-shadow: 0 0 25px rgba(255,120,150,.5); }
+    100% { transform: scale(1); box-shadow: none; }
+  }
+
+  /* =========================
+    フッター画像（PC）
+  ========================= */
+  .end-illust img {
+    content: url("../img/pc/footer.svg");
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* フッターメニュー（PC） */
+  .footer-menu {
+    max-width: 100%;
+    margin: 0 auto;
+    display: flex;
+    height: 120px;
+    flex-wrap: wrap;          /* 横に収まらない場合は折り返し */
+    justify-content: center;  /* 中央寄せ */
+    gap: 20px 80px;           /* 縦 / 横の間隔 */
+  }
+
+  .footer-menu a {
+    font-weight: 600;
   }
 }
-
-/* =========================
-   フッター画像（PC）
-========================= */
-.end-illust img {
-  content: url("../img/pc/footer.svg");
-  display: block;
-  height: auto;
-  width: 100%;
-}
-
-/* =========================
-   フッターメニュー（PC）
-========================= */
-.footer-menu {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px 80px;
-  height: 120px;
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 100%;
-}
-
-.footer-menu a {
-  font-weight: 600;
-}
-
-
