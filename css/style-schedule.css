@@ -641,7 +641,7 @@ body {
 
     .hero {
         background: linear-gradient(#9ed9ff 0%, #ffc1bf 100%);
-        border: 1px solid #8b5a3c;
+        border: none;
         border-radius: 20px;
         margin-bottom: 20px;
         position: relative;
