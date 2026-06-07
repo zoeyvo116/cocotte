@@ -33,6 +33,18 @@ const infoLinks = {
 let activePopup = null;
 let activeQmark = null;
 
+/* ？ごとのラベル（PCホバー時に表示） */
+const qmarkLabels = {
+  info1: "メニュー",
+  info2: "カレンダー",
+  info3: "なにたべる？",
+  info4: "ストーリー",
+  info5: "ニュース",
+  info6: "インフォメーション"
+};
+
+let hoverLabel = null;
+
 /* =====================================================
    クエスチョンマーククリック処理
 ===================================================== */
@@ -42,39 +54,97 @@ document.querySelectorAll(".qmark").forEach(qmark => {
     const key = qmark.dataset.info;
     if (!key) return;
 
+    hidePcHint();   // 初めてクリックしたらヒントを消す
+
     if (window.innerWidth >= 1024) {
       openPCPopup(qmark, key);
     } else {
       openMobileInfo(key);
     }
   });
+
+  /* PC：？にホバーでラベル表示 */
+  qmark.addEventListener("mouseenter", () => {
+    if (window.innerWidth < 1024) return;
+    const key = qmark.dataset.info;
+    const text = qmarkLabels[key];
+    if (!text) return;
+
+    hoverLabel = document.createElement("div");
+    hoverLabel.className = "qmark-label";
+    hoverLabel.textContent = text;
+    document.body.appendChild(hoverLabel);
+
+    const r = qmark.getBoundingClientRect();
+    hoverLabel.style.left = (r.left + r.width / 2) + "px";
+    hoverLabel.style.top = (r.top - 10) + "px";
+
+    requestAnimationFrame(() => hoverLabel?.classList.add("show"));
+  });
+
+  qmark.addEventListener("mouseleave", () => {
+    hoverLabel?.remove();
+    hoverLabel = null;
+  });
+});
+
+/* =====================================================
+   PC用：操作ガイド（中央モーダル）
+===================================================== */
+const pcHint = document.getElementById("pcHint");
+const pcHintClose = document.getElementById("pcHintClose");
+const pcHintOk = document.getElementById("pcHintOk");
+let pcHintShown = false;
+
+function showPcHint() {
+  if (window.innerWidth < 1024 || !pcHint || pcHintShown) return;
+  pcHintShown = true;
+  pcHint.classList.add("show");
+}
+
+function hidePcHint() {
+  pcHint?.classList.remove("show");
+}
+
+/* 閉じる：ボタン・×・背景クリック */
+pcHintClose?.addEventListener("click", hidePcHint);
+pcHintOk?.addEventListener("click", hidePcHint);
+pcHint?.addEventListener("click", e => {
+  if (e.target === pcHint) hidePcHint();   // 背景（オーバーレイ）クリックで閉じる
 });
 
 /* ===================== PC表示 ===================== */
 function openPCPopup(qmark, key) {
-  // 既存ポップアップがあれば閉じる
-  if (activePopup) {
+  // 同じ「？」をもう一度クリック → 閉じる（トグル）
+  if (activePopup && activeQmark === qmark) {
     closePopup();
     return;
   }
+  // 別の「？」をクリック → 今のを閉じてすぐ新しいのを開く（1クリック）
+  if (activePopup) closePopup();
 
   qmark.style.opacity = "0";
 
   const popup = document.createElement("img");
   popup.src = infoPC[key];
-  popup.className = "pc-info-img show";
-
-  // ⚠️ 画面ズレ防止のため fixed を使用
-  popup.style.position = "fixed";
-  popup.style.width = "220px";
-  popup.style.height = "220px";
-
+  popup.className = "pc-info-img";   // .show は次フレームで付与
   document.body.appendChild(popup);
 
-  positionPopupCenter(qmark, popup, 220, 220);
+  // 「？」の上に表示（実寸で計算：透明クリック誤爆を防ぐ）
+  const pw = popup.offsetWidth || 220;
+  const ph = popup.offsetHeight || 75;
+  positionPopupAbove(qmark, popup, pw, ph);
+
+  // 次フレームで .show → transition がなめらかに発火
+  requestAnimationFrame(() => popup.classList.add("show"));
+
+  // 誤クリック防止：出現直後はリンクを無効化（400ms後に有効）
+  let clickable = false;
+  setTimeout(() => { clickable = true; }, 400);
 
   popup.addEventListener("click", e => {
     e.stopPropagation();
+    if (!clickable) return;   // まだ出現中 → 遷移しない
     location.href = infoLinks[key];
   });
 
@@ -98,14 +168,26 @@ function openMobileInfo(key) {
   };
 }
 
-/* ===================== ポップアップ位置計算 ===================== */
-function positionPopupCenter(target, popup, width, height) {
+/* ===================== ポップアップ位置計算 =====================
+   「？」の中心に合わせ、ほんの少し（30px）だけ上げる。
+================================================================ */
+function positionPopupAbove(target, popup, width, height) {
   const rect = target.getBoundingClientRect();
+  const margin = 8;
+  const RAISE = 15;   // 元の中央位置から少しだけ上へ
 
-  popup.style.left =
-    rect.left + rect.width / 2 - width / 2 + "px";
-  popup.style.top =
-    rect.top + rect.height / 2 - height / 2 + "px";
+  let left = rect.left + rect.width / 2 - width / 2;
+  let top = rect.top + rect.height / 2 - height / 2 - RAISE;
+
+  // 左右クランプ（画面外防止）
+  if (left < margin) left = margin;
+  if (left + width > window.innerWidth - margin) {
+    left = window.innerWidth - width - margin;
+  }
+  if (top < margin) top = margin;
+
+  popup.style.left = left + "px";
+  popup.style.top = top + "px";
 }
 
 /* ===================== ポップアップを閉じる ===================== */
@@ -145,19 +227,7 @@ window.addEventListener("resize", forceMobileInfoBoxDefault);
 /* =====================================================
    サイドメニュー制御
 ===================================================== */
-const menuBtn = document.querySelector(".hero-menu");
-const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
-
-menuBtn?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.add("active");
-});
-
-closeMenu?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.remove("active");
-});
+Data.initSideMenu();
 
 /* =====================================================
    ローディング＋スケジュール処理
@@ -167,53 +237,6 @@ const counter = document.getElementById("loadingCounter");
 const enterBtn = document.getElementById("enterSite");
 const goToMenuBtn = document.getElementById("goToMenuBtn");
 const todayText = document.getElementById("todayCourseText");
-
-const SCHEDULE_CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb5_X0F7mLgGuVyCRd73aJ0O6dSM7uEBaIfVpf_fWkRpxauvefW2NCfoqeZ-mz3Z3oXDCFkRi-iCI_/pub?gid=364695542&single=true&output=csv";
-
-const COURSE_LABEL = {
-  patisserie: "パティシエコース",
-  barista: "カフェ＆バリスタコース",
-  bread: "ブーランジェコース",
-  creator: "スイーツカフェクリエイターコース"
-};
-
-let scheduleCache = [];
-
-/* ===================== CSV読み込み ===================== */
-async function loadScheduleCSV() {
-  if (scheduleCache.length) return scheduleCache;
-
-  const res = await fetch(SCHEDULE_CSV_URL);
-  const text = await res.text();
-  const lines = text.trim().split("\n");
-  lines.shift();
-
-  scheduleCache = lines.map(line => {
-    const cells = line.split(",");
-    const day = Number(cells[0]);
-    const months = {};
-
-    for (let m = 1; m <= 12; m++) {
-      months[m] = (cells[m] || "").trim().toLowerCase();
-    }
-    return { day, months };
-  });
-
-  return scheduleCache;
-}
-
-/* ===================== 本日のコース取得 ===================== */
-async function getTodayCourse() {
-  const data = await loadScheduleCSV();
-  const now = new Date();
-  const row = data.find(r => r.day === now.getDate());
-  if (!row) return null;
-
-  const course = row.months[now.getMonth() + 1];
-  if (!course || course === "off" || course === "skip") return null;
-  return course;
-}
 
 /* =====================================================
    初期処理
@@ -235,15 +258,22 @@ window.addEventListener("load", async () => {
       }
     }, 18);
   } else {
-    loading.style.display = "none";
-    document.body.classList.add("loaded");
+    // すでに訪問済み：ローディングをスムーズにフェードアウト
+    loading.style.transition = "opacity 0.4s ease";
+    loading.style.opacity = "0";
+    setTimeout(() => {
+      loading.style.display = "none";
+      document.body.classList.add("loaded");
+      setTimeout(showPcHint, 600);   // サイトに入ったらヒント表示
+    }, 400);
   }
 
-  const courseKey = await getTodayCourse();
+  /* 本日のコース取得（data.js 経由・エラー時は null） */
+  const courseKey = await Data.getTodayCourse();
 
   if (courseKey) {
     todayText.innerHTML =
-      `本日は<br><strong>${COURSE_LABEL[courseKey]}</strong>を提供しています ☕🍰`;
+      `本日は<br><strong>${Data.COURSE_LABEL[courseKey]}</strong>を提供しています ☕🍰`;
     goToMenuBtn.classList.remove("disabled");
     goToMenuBtn.href = "menu.html";
   } else {
@@ -272,6 +302,6 @@ enterBtn?.addEventListener("click", e => {
     loading.style.display = "none";
     document.body.classList.add("loaded");
     sessionStorage.setItem("cocotteLoaded", "true");
+    setTimeout(showPcHint, 600);   // サイトに入ったらヒント表示
   }, 400);
 });
-

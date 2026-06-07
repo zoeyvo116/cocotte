@@ -1,11 +1,3 @@
-/* ===================================
-   リセット（全ブラウザ初期化）
-=================================== */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
 
 body {
     background: #ffc1bf;
@@ -15,54 +7,6 @@ body {
     
 }
 
-/* ===================================
-   見出し用フォント PaulaLily
-=================================== */
-@font-face {
-    font-family: 'PaulaLily';
-    font-style: normal;
-    font-weight: bold;
-    src: url('../fonts/PaulaLily-B.otf') format('truetype');
-}
-
-/* ===================================
-   本文用フォント M PLUS Rounded
-=================================== */
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 100;
-    src: url('../fonts/MPLUSRounded1c-Thin.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 300;
-    src: url('../fonts/MPLUSRounded1c-Light.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 400;
-    src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 500;
-    src: url('../fonts/MPLUSRounded1c-Medium.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 700;
-    src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'MPLUSRounded';
-    font-weight: 900;
-    src: url('../fonts/MPLUSRounded1c-Black.ttf') format('truetype');
-}
 
 /* ===================================
    全体ラッパー（スマホ幅制御）
@@ -465,7 +409,6 @@ body {
 }
 
 
-
 /* ===================================
    コースボタン（4種類のコースの一覧）
 =================================== */
@@ -761,7 +704,6 @@ body {
     border-radius: 10px;
     opacity: 0.8;
   }
-
 
 
     /* メニューの縮小アニメ（画面幅対応） */
@@ -1116,7 +1058,6 @@ body {
         }
 
 
-
     @keyframes pcBounceLoop {
         0%,
         100% {
@@ -1140,8 +1081,5 @@ body {
         }
     }
 }
-
-
-
 
 

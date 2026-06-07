@@ -541,16 +541,4 @@ document.querySelector(".result-nav.next").onclick = () => {
 /* =====================================================
    サイドメニュー制御
 ===================================================== */
-const menuBtn = document.querySelector(".hero-menu");
-const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
-
-menuBtn?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.add("active");
-});
-
-closeMenu?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.remove("active");
-});
+Data.initSideMenu();

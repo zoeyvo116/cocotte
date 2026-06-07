@@ -1,11 +1,3 @@
-/* ===================================
-   リセット（全ブラウザ共通初期化）
-=================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   background: #ffc1bf;
@@ -14,26 +6,6 @@ body {
   font-family: "MPLUSRounded", sans-serif;
 }
 
-/* ===================================
-   フォント設定
-=================================== */
-@font-face {
-  font-family: 'PaulaLily';
-  font-weight: 700;
-  src: url('../fonts/PaulaLily-B.otf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 400;
-  src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 700;
-  src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
-}
 
 /* ===================================
    ラッパー（画面幅制御）
@@ -838,7 +810,6 @@ body {
 }
 
 
-
 /* =====================================================
    PCレスポンシブ（1024px以上）
 ===================================================== */
@@ -1137,7 +1108,7 @@ body {
       "left image right"
       ".    text   .";
     align-items: center;
-    row-gap: 80px;
+    row-gap: 48px;
   }
 
   .story-section.concept .story-image {
@@ -1200,8 +1171,8 @@ body {
     margin-right: -50vw;
 
     height: 300px;
-    margin-top: 100px;
-    margin-bottom: 100px;
+    margin-top: 48px;
+    margin-bottom: 48px;
 
     background-image: url("../img/pc/story-greengap.svg");
     background-repeat: no-repeat;
@@ -1224,7 +1195,7 @@ body {
       "text2 img2";
 
     column-gap: 50px;
-    row-gap: 80px;
+    row-gap: 56px;
   }
 
   /* タイトル */
@@ -1317,9 +1288,6 @@ body {
   }
 
 
-
-
-
   /* ===================================
     PC：各行（MAIN＋SUB 横並び）
   =================================== */
@@ -1373,7 +1341,7 @@ body {
     gap: 24px;
     padding: 0;
     margin-bottom: 8px;
-    margin-top: 120px;
+    margin-top: 64px;
   }
 
   .course-card {

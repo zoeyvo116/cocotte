@@ -3,9 +3,6 @@ let popupPosition = null;
 /* =====================================================
    設定（CONFIG）
 ===================================================== */
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb5_X0F7mLgGuVyCRd73aJ0O6dSM7uEBaIfVpf_fWkRpxauvefW2NCfoqeZ-mz3Z3oXDCFkRi-iCI_/pub?output=csv";
-
 const COURSE_INFO = {
   patisserie: {
     title: "パティシエコース",
@@ -41,9 +38,7 @@ const rows = document.querySelectorAll(".hanbai-row");
 const courseBtns = document.querySelectorAll(".course-item");
 
 const infoImage = document.getElementById("infoImage");
-const menuBtn = document.querySelector(".hero-menu");
 const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
 
 /* =====================================================
    状態管理（STATE）
@@ -54,34 +49,12 @@ let scheduleData = {};
    CSVデータ読み込み
 ===================================================== */
 async function loadSchedule() {
-  const cached = localStorage.getItem("scheduleData");
-  if (cached) {
-    scheduleData = JSON.parse(cached);
-    return;
+  try {
+    scheduleData = await Data.loadScheduleByCourse();
+  } catch (err) {
+    console.error("[calendar] CSV読み込みエラー:", err);
+    scheduleData = {};
   }
-
-  const res = await fetch(CSV_URL);
-  const text = await res.text();
-  const lines = text.trim().split("\n");
-  lines.shift(); // ヘッダー行を除外
-
-  scheduleData = {};
-
-  lines.forEach(line => {
-    const cells = line.split(",");
-    const day = Number(cells[0]);
-
-    for (let m = 1; m <= 12; m++) {
-      const course = (cells[m] || "").trim().toLowerCase();
-      if (!course || course === "off" || course === "skip") continue;
-
-      if (!scheduleData[course]) scheduleData[course] = {};
-      if (!scheduleData[course][m]) scheduleData[course][m] = [];
-      scheduleData[course][m].push(day);
-    }
-  });
-
-  localStorage.setItem("scheduleData", JSON.stringify(scheduleData));
 }
 
 /* =====================================================
@@ -178,15 +151,7 @@ function initPcCurveMenu() {
 /* =====================================================
    ハンバーガーメニュー制御
 ===================================================== */
-menuBtn.onclick = e => {
-  e.stopPropagation();
-  sideMenu.classList.add("active");
-};
-
-closeMenu.onclick = e => {
-  e.stopPropagation();
-  sideMenu.classList.remove("active");
-};
+Data.initSideMenu();
 
 document.addEventListener("click", () => {
   if (sideMenu.classList.contains("active")) {

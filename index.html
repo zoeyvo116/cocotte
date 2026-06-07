@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style-phone.css">
+  <link rel="stylesheet" href="css/base.css">  <link rel="stylesheet" href="css/style-phone.css">
   <title>Cocotte Homepage</title>
 </head>
 
@@ -84,6 +84,9 @@
         <img src="img/phone/q-post.svg"   class="qmark q-post"   data-info="info5" alt="">
         <img src="img/phone/q-dark.svg"   class="qmark q-dark"   data-info="info6" alt="">
       </div>
+
+      <!-- PC用CTA（PCのみ表示） -->
+      <a href="original.html" class="pc-cta">本日のおすすめを見る <span class="pc-cta-arrow">→</span></a>
     </section>
 
     <!-- =========================
@@ -154,6 +157,19 @@
   </div><!-- /.wrapper -->
 
   <!-- =========================
+       PC用：操作ガイド（中央モーダル・PCのみ）
+  ========================= -->
+  <div id="pcHint" class="pc-hint-overlay">
+    <div class="pc-hint-card">
+      <button class="pc-hint-close" id="pcHintClose" aria-label="閉じる">×</button>
+      <div class="pc-hint-emoji">🗺️</div>
+      <h3>ようこそ COCOTTE へ！</h3>
+      <p>マップの <span class="pc-hint-q">❓</span> マークをクリックすると<br>各ページへ進めます。</p>
+      <button class="pc-hint-ok" id="pcHintOk">さっそく探検する</button>
+    </div>
+  </div>
+
+  <!-- =========================
        ローディング画面
   ========================= -->
   <div id="loadingScreen" class="loading-screen">
@@ -184,7 +200,7 @@
   </div>
 
   <!-- JavaScript -->
-  <script src="js/script.js"></script>
+  <script src="js/data.js"></script>  <script src="js/script.js"></script>
 
 </body>
 </html>

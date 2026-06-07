@@ -1,11 +1,3 @@
-/* ===================================
-   リセット
-=================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   background: #ffc1bf;
@@ -24,26 +16,6 @@ body.no-scroll {
   pointer-events: none;
 }
 
-
-/* ===================================
-   フォント設定
-=================================== */
-@font-face {
-  font-family: 'PaulaLily';
-  font-weight: 700;
-  src: url('../fonts/PaulaLily-B.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 400;
-  src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 700;
-  src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
-}
 
 /* ===================================
    ラッパー
@@ -112,7 +84,6 @@ body.no-scroll {
   width: 100%;
   display: block;
 }
-
 
 
 /* 雲アニメーション */
@@ -271,7 +242,6 @@ body.no-scroll {
 }
 
 
-
 /* ===================================
    質問テキスト
 =================================== */
@@ -317,7 +287,6 @@ body.no-scroll {
 }
 
 
-
 /* ===============================
    RESULT SECTION
 ================================ */
@@ -325,7 +294,6 @@ body.no-scroll {
   margin-top: 0;       /* không đẩy thêm */
   padding-top: 20px;  /* sát road */
 }
-
 
 
 /* KHUNG KẾT QUẢ */
@@ -355,7 +323,6 @@ body.no-scroll {
 
   z-index: 3; /* cao hơn viền */
 }
-
 
 
 /* đặt đúng bán kính viền */
@@ -473,6 +440,5 @@ body.no-scroll {
   border-radius: 0 0 20px 20px;
   padding-bottom: 80px;
 }
-
 
 

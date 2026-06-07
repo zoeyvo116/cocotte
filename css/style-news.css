@@ -1,11 +1,3 @@
-/* ===================================
-   リセット
-=================================== */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
 
 body {
   background: #ffc1bf;
@@ -14,26 +6,6 @@ body {
   font-family: "MPLUSRounded", sans-serif;
 }
 
-/* ===================================
-   フォント設定
-=================================== */
-@font-face {
-  font-family: 'PaulaLily';
-  font-weight: 700;
-  src: url('../fonts/PaulaLily-B.otf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 400;
-  src: url('../fonts/MPLUSRounded1c-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'MPLUSRounded';
-  font-weight: 700;
-  src: url('../fonts/MPLUSRounded1c-Bold.ttf') format('truetype');
-}
 
 /* ===================================
    ラッパー
@@ -261,7 +233,6 @@ body {
 .thumb-hint .arrow:last-child {
   animation: hintMove 1.6s infinite;
 }
-
 
 
 /* ===================================
@@ -550,7 +521,6 @@ body {
   opacity: 0.85;
   text-decoration: none;
 }
-
 
 
 /* =========================

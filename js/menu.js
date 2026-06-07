@@ -45,11 +45,8 @@ const courses = [
 ];
 
 /* =========================
-   Google Sheets 設定
+   Google Sheets 設定（gid のみ。URL は data.js）
 ========================= */
-const SHEET_BASE =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSFAhm6KntoMEtcZH7EiY-XwPTk3W5Cvlz-wL2hMGG9Pmb12etBAJuMTNa_jgrB7TuJ7box78Of97dT/pub";
-
 const SHEETS = {
   patisserie: 0,
   bread: 1373192932,
@@ -86,42 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* =========================
-   CSV パーサー
-========================= */
-function parseCSV(csv) {
-  const rows = [];
-  let row = [];
-  let value = "";
-  let insideQuote = false;
-
-  for (let i = 0; i < csv.length; i++) {
-    const c = csv[i];
-    const n = csv[i + 1];
-
-    if (c === '"' && insideQuote && n === '"') {
-      value += '"';
-      i++;
-    } else if (c === '"') {
-      insideQuote = !insideQuote;
-    } else if (c === "," && !insideQuote) {
-      row.push(value);
-      value = "";
-    } else if (c === "\n" && !insideQuote) {
-      row.push(value);
-      rows.push(row);
-      row = [];
-      value = "";
-    } else {
-      value += c;
-    }
-  }
-
-  row.push(value);
-  rows.push(row);
-  return rows;
-}
-
-/* =========================
    コース描画
 ========================= */
 function renderCourse(index) {
@@ -154,10 +115,13 @@ async function loadMenuByCourse(courseId) {
   const gid = SHEETS[courseId];
   if (gid === undefined) return;
 
-  const url = `${SHEET_BASE}?gid=${gid}&single=true&output=csv`;
-  const res = await fetch(url);
-  const csv = await res.text();
-  const rows = parseCSV(csv).slice(1);
+  let rows;
+  try {
+    rows = await Data.loadMenuSheet(gid);
+  } catch (err) {
+    console.error("[menu] CSV読み込みエラー:", err);
+    return;
+  }
 
   currentMenuItems = rows
     .map(cols => ({
@@ -424,19 +388,7 @@ function scrollToCourseSwitchOnly() {
 /* =========================
    サイドメニュー制御
 ========================= */
-const menuBtn = document.querySelector(".hero-menu");
-const sideMenu = document.getElementById("sideMenu");
-const closeMenu = document.getElementById("closeMenu");
-
-menuBtn?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.add("active");
-});
-
-closeMenu?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.remove("active");
-});
+Data.initSideMenu();
 
 /* =========================
    外部ページからの遷移（URLハッシュ対応）

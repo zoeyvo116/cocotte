@@ -1,12 +1,4 @@
 /* =====================================================
-   設定（CONFIG）
-===================================================== */
-
-// 🔧 CSVデータURL（1シートのみ）
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRb5_X0F7mLgGuVyCRd73aJ0O6dSM7uEBaIfVpf_fWkRpxauvefW2NCfoqeZ-mz3Z3oXDCFkRi-iCI_/pub?gid=364695542&single=true&output=csv";
-
-/* =====================================================
    DOM取得
 ===================================================== */
 const gridEl  = document.querySelector(".calendar-grid");
@@ -24,50 +16,17 @@ let currentYear  = new Date().getFullYear();
 let monthData = [];
 let rawData   = [];
 
-const scheduleData = {};
-
 /* =====================================================
-   CSV読み込み（初回のみ）
+   CSV読み込み（初回のみ・data.js 経由）
 ===================================================== */
 async function loadCSV() {
   if (rawData.length) return;
-
-  const res  = await fetch(CSV_URL);
-  const text = await res.text();
-
-  const lines = text.trim().split("\n");
-  lines.shift(); // ヘッダー行を除外
-
-  rawData = lines.map(line => {
-    const cells = line.split(",");
-    const day   = Number(cells[0]);
-
-    const months = {};
-    for (let m = 1; m <= 12; m++) {
-      months[m] = (cells[m] || "").trim().toLowerCase();
-    }
-
-    return { day, months };
-  });
-
-  buildScheduleData();
-}
-
-/* =====================================================
-   scheduleData構築（保存・再利用用）
-===================================================== */
-function buildScheduleData() {
-  rawData.forEach(({ day, months }) => {
-    Object.entries(months).forEach(([month, course]) => {
-      if (!course || course === "off" || course === "skip") return;
-
-      scheduleData[course] ??= {};
-      scheduleData[course][month] ??= [];
-      scheduleData[course][month].push(day);
-    });
-  });
-
-  localStorage.setItem("scheduleData", JSON.stringify(scheduleData));
+  try {
+    rawData = await Data.loadSchedule();
+  } catch (err) {
+    console.error("[schedule] CSV読み込みエラー:", err);
+    rawData = [];
+  }
 }
 
 /* =====================================================
@@ -183,16 +142,4 @@ updateCalendar();
 /* =====================================================
    サイドメニュー制御
 ===================================================== */
-const closeMenu = document.getElementById("closeMenu");
-const menuBtn   = document.querySelector(".hero-menu");
-const sideMenu  = document.getElementById("sideMenu");
-
-menuBtn?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.add("active");
-});
-
-closeMenu?.addEventListener("click", e => {
-  e.stopPropagation();
-  sideMenu.classList.remove("active");
-});
+Data.initSideMenu();
